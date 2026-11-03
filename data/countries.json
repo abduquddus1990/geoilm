@@ -1,0 +1,27 @@
+{
+ "oson": [
+  ["380","IT","Italiya"],["076","BR","Braziliya"],["392","JP","Yaponiya"],["818","EG","Misr"],["036","AU","Avstraliya"],
+  ["250","FR","Fransiya"],["356","IN","Hindiston"],["484","MX","Meksika"],["792","TR","Turkiya"],["826","GB","Buyuk Britaniya"],
+  ["398","KZ","Qozog‘iston"],["860","UZ","O‘zbekiston"],["840","US","AQSH"],["124","CA","Kanada"],["156","CN","Xitoy"],
+  ["724","ES","Ispaniya"],["276","DE","Germaniya"],["032","AR","Argentina"],["682","SA","Saudiya Arabistoni"],["410","KR","Janubiy Koreya"],
+  ["300","GR","Gretsiya"],["152","CL","Chili"],["804","UA","Ukraina"],["364","IR","Eron"]
+ ],
+ "o‘rtacha": [
+  ["578","NO","Norvegiya"],["752","SE","Shvetsiya"],["246","FI","Finlyandiya"],["616","PL","Polsha"],["620","PT","Portugaliya"],
+  ["586","PK","Pokiston"],["004","AF","Afg‘oniston"],["762","TJ","Tojikiston"],["417","KG","Qirg‘iziston"],["795","TM","Turkmaniston"],
+  ["031","AZ","Ozarbayjon"],["496","MN","Mo‘g‘uliston"],["764","TH","Tailand"],["704","VN","Vyetnam"],["608","PH","Filippin"],
+  ["604","PE","Peru"],["170","CO","Kolumbiya"],["710","ZA","Janubiy Afrika"],["566","NG","Nigeriya"],["504","MA","Marokash"],
+  ["012","DZ","Jazoir"],["368","IQ","Iroq"],["554","NZ","Yangi Zelandiya"],["192","CU","Kuba"],["450","MG","Madagaskar"],
+  ["112","BY","Belarus"],["642","RO","Ruminiya"],["862","VE","Venesuela"],["231","ET","Efiopiya"],["404","KE","Keniya"]
+ ],
+ "qiyin": [
+  ["418","LA","Laos"],["116","KH","Kambodja"],["104","MM","Myanma"],["524","NP","Nepal"],["064","BT","Butan"],
+  ["050","BD","Bangladesh"],["144","LK","Shri-Lanka"],["268","GE","Gruziya"],["051","AM","Armaniston"],["498","MD","Moldova"],
+  ["688","RS","Serbiya"],["348","HU","Vengriya"],["040","AT","Avstriya"],["203","CZ","Chexiya"],["191","HR","Xorvatiya"],
+  ["100","BG","Bolgariya"],["440","LT","Litva"],["428","LV","Latviya"],["233","EE","Estoniya"],["600","PY","Paragvay"],
+  ["858","UY","Urugvay"],["068","BO","Boliviya"],["218","EC","Ekvador"],["788","TN","Tunis"],["434","LY","Liviya"],
+  ["729","SD","Sudan"],["148","TD","Chad"],["466","ML","Mali"],["562","NE","Niger"],["024","AO","Angola"],
+  ["894","ZM","Zambiya"],["834","TZ","Tanzaniya"],["508","MZ","Mozambik"],["512","OM","Ummon"],["887","YE","Yaman"],
+  ["400","JO","Iordaniya"],["760","SY","Suriya"],["458","MY","Malayziya"]
+ ]
+}

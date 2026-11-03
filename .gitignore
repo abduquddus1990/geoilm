@@ -1,0 +1,7 @@
+.env
+client_secret.json
+out/
+node_modules/
+quiz_generator/quiz.js
+__pycache__/
+*.pyc

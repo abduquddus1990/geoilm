@@ -1,0 +1,17 @@
+{
+  "name": "geoilm-quiz-generator",
+  "version": "1.0.0",
+  "private": true,
+  "description": "GeoIlm: daftar uslubidagi 'Bu qaysi davlat?' video generatori",
+  "scripts": {
+    "postinstall": "node build_world.js"
+  },
+  "dependencies": {
+    "@fontsource/caveat": "^5.0.0",
+    "d3": "^7.9.0",
+    "playwright": "^1.48.0",
+    "roughjs": "^4.6.6",
+    "topojson-client": "^3.1.0",
+    "world-atlas": "^2.0.2"
+  }
+}
