@@ -33,15 +33,21 @@ def _esc(s: str) -> str:
 def send_manual(path: str, cap: dict, chat_ids: list[str]) -> None:
     """Qo'lda joylash uchun: videoni va nusxa olinadigan matnlarni (YouTube sarlavha/tavsif, Instagram) yuboradi."""
     token = os.environ["TG_BOT_TOKEN"]
+    sent = 0
     for chat in chat_ids:
         with open(path, "rb") as f:
             r = requests.post(API.format(token=token, method="sendVideo"),
                               data={"chat_id": chat, "caption": "🌍 GeoIlm — tayyor video. Matnlar pastda 👇 (bosib nusxa oling)",
                                     "supports_streaming": "true", "width": 1080, "height": 1920},
                               files={"video": f}, timeout=600)
-        r.raise_for_status()
+        if not r.ok:   # odatda: foydalanuvchi botga hali /start bosmagan
+            print(f"⚠️ {chat}: {r.json().get('description')}")
+            continue
+        sent += 1
         for label, text in (("▶️ YouTube sarlavha", cap["yt_title"]), ("▶️ YouTube tavsif", cap["yt_desc"]),
                             ("📸 Instagram matni", cap["instagram"])):
             requests.post(API.format(token=token, method="sendMessage"), timeout=30, data={
                 "chat_id": chat, "parse_mode": "HTML",
                 "text": f"<b>{label}</b>\n<pre>{_esc(text)}</pre>"[:4096]}).raise_for_status()
+    if not sent:
+        raise RuntimeError("Hech bir chatga yuborilmadi — botga /start bosilganini tekshiring")
