@@ -1,6 +1,6 @@
 # GeoIlm — "Bu qaysi davlat?" avtomat video zavodi
 
-Kuniga 3 marta (09:00 / 14:00 / 20:00, Toshkent vaqti) avtomatik:
+Kuniga aniq 3 marta (06:20 / 19:00 / 21:00, Toshkent vaqti) avtomatik:
 
 1. 10 ta davlat tanlanadi: 3 ta oson, 4 ta o‘rtacha, 3 ta qiyin. Bir davlat 14 kun ichida takrorlanmaydi.
 2. Daftar uslubidagi 1080×1920 video render qilinadi (taymer, effektlar, ixtiyoriy fon musiqasi).
@@ -120,9 +120,11 @@ Har biri ishlasa, tayyor.
 
 | Toshkent vaqti | Format | Ma'lumot fayli |
 |---|---|---|
-| 09:00 | Bu qaysi davlat? (xarita, B dizayn) | `data/countries.json` |
-| 14:00 | Poytaxti qaysi? | `data/capitals.json` |
-| 20:00 | Bu qaysi futbolchi? (klublar yo'li) | `data/players.json` |
+| 06:20 | Bu qaysi davlat? (xarita, B dizayn) | `data/countries.json` |
+| 21:00 | Poytaxti qaysi? | `data/capitals.json` |
+| 19:00 | Bu qaysi futbolchi? (klublar yo'li) | `data/players.json` |
+
+Har format uchun +1 soatlik zaxira jadval bor; `data/sent.json` bugun yuborilganini eslab qoladi, shuning uchun kuniga har formatdan ko'pi bilan bitta video ketadi.
 
 Qo'lda tanlash: `python run_quiz.py --mode poytaxt --no-publish`
 

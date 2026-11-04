@@ -1,14 +1,26 @@
 name: GeoIlm quiz
 
+# Toshkent vaqti = UTC + 5. Kuniga ANIQ 3 ta video: 06:20 davlat, 19:00 futbolchi, 21:00 poytaxt.
+# Har format uchun +1 soatlik zaxira jadval bor: GitHub asosiy ishni o'tkazib yuborsa, zaxira yuboradi;
+# asosiy ish bajarilgan bo'lsa (data/sent.json), zaxira hech narsa yubormaydi.
 on:
   schedule:
-    - cron: "0 4 * * *"     # 09:00 Toshkent
-    - cron: "0 9 * * *"     # 14:00 Toshkent
-    - cron: "0 15 * * *"    # 20:00 Toshkent
-  workflow_dispatch:         # Actions sahifasida "Run workflow" tugmasi
+    - cron: "20 1 * * *"    # 06:20 davlat
+    - cron: "20 2 * * *"    #   zaxira
+    - cron: "0 14 * * *"    # 19:00 futbolchi
+    - cron: "0 15 * * *"    #   zaxira
+    - cron: "0 16 * * *"    # 21:00 poytaxt
+    - cron: "0 17 * * *"    #   zaxira
+  workflow_dispatch:         # qo'lda ishga tushirish (har doim yuboradi)
+    inputs:
+      mode:
+        description: "Format"
+        type: choice
+        default: davlat
+        options: [davlat, futbolchi, poytaxt]
 
 permissions:
-  contents: write            # data/used.json ni repoga qaytarib yozish uchun
+  contents: write            # data/used.json va data/sent.json ni repoga qaytarib yozish uchun
 
 concurrency:
   group: geoilm
@@ -21,7 +33,34 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Format va takror tekshiruvi
+        id: plan
+        env:
+          EVENT: ${{ github.event_name }}
+          CRON: ${{ github.event.schedule }}
+          INPUT_MODE: ${{ github.event.inputs.mode }}
+        run: |
+          if [ "$EVENT" = "schedule" ]; then
+            case "$CRON" in
+              "20 1 * * *"|"20 2 * * *") MODE=davlat ;;
+              "0 14 * * *"|"0 15 * * *") MODE=futbolchi ;;
+              "0 16 * * *"|"0 17 * * *") MODE=poytaxt ;;
+              *) echo "::error::Noma'lum jadval: $CRON"; exit 1 ;;
+            esac
+            python3 sent_log.py check "$MODE" >> "$GITHUB_OUTPUT"
+          else
+            MODE="${INPUT_MODE:-davlat}"
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+          echo "mode=$MODE" >> "$GITHUB_OUTPUT"
+          echo "Format: $MODE"
+
+      - name: Bugun allaqachon yuborilgan
+        if: steps.plan.outputs.skip == 'true'
+        run: echo "Bugungi ${{ steps.plan.outputs.mode }} videosi yuborilgan, zaxira ish o'tkazib yuboriladi."
+
       - name: Secretlar tekshiruvi (bo'sh bo'lsa darrov to'xtaydi)
+        if: steps.plan.outputs.skip != 'true'
         env:
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_MANUAL_CHAT_IDS: ${{ secrets.TG_MANUAL_CHAT_IDS }}
@@ -31,34 +70,39 @@ jobs:
           done
 
       - uses: actions/setup-python@v5
+        if: steps.plan.outputs.skip != 'true'
         with: { python-version: "3.11", cache: pip }
 
       - uses: actions/setup-node@v4
+        if: steps.plan.outputs.skip != 'true'
         with: { node-version: 20, cache: npm, cache-dependency-path: quiz_generator/package-lock.json }
 
       - name: Tizim paketlari (ffmpeg, emoji shrift)
+        if: steps.plan.outputs.skip != 'true'
         run: sudo apt-get update && sudo apt-get install -y ffmpeg fonts-noto-color-emoji
 
       - name: Kutubxonalar
+        if: steps.plan.outputs.skip != 'true'
         run: |
           pip install -r requirements.txt
           npm ci --prefix quiz_generator
           npx --prefix quiz_generator playwright install --with-deps chromium
 
       - name: Video yasash va joylash
+        if: steps.plan.outputs.skip != 'true'
         env:
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_ADMIN_CHAT_ID: ${{ secrets.TG_ADMIN_CHAT_ID }}
           TG_MANUAL_CHAT_IDS: ${{ secrets.TG_MANUAL_CHAT_IDS }}
-        run: python run_quiz.py --manual
+        run: python run_quiz.py --manual --mode ${{ steps.plan.outputs.mode }}
 
-      - name: used.json ni saqlash
-        if: always()
+      - name: Holatni saqlash (used.json, sent.json)
+        if: always() && steps.plan.outputs.skip != 'true'
         run: |
           git config user.name "geoilm-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add data/used.json
-          git diff --cached --quiet || (git commit -m "used.json yangilandi" && git push)
+          git add data/used.json data/sent.json
+          git diff --cached --quiet || (git commit -m "holat yangilandi" && git pull --rebase -q && git push)
 
       - name: Xato bo'lsa Telegramga xabar
         if: failure()
@@ -66,4 +110,4 @@ jobs:
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_ADMIN_CHAT_ID: ${{ secrets.TG_ADMIN_CHAT_ID }}
         run: |
-          [ -n "$TG_BOT_TOKEN" ] && [ -n "$TG_ADMIN_CHAT_ID" ] && curl -s "https://api.telegram.org/bot$TG_BOT_TOKEN/sendMessage"             -d chat_id="$TG_ADMIN_CHAT_ID"             -d text="GeoIlm: video yasashda xato. Log: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" || true
+          [ -n "$TG_BOT_TOKEN" ] && [ -n "$TG_ADMIN_CHAT_ID" ] && curl -s "https://api.telegram.org/bot$TG_BOT_TOKEN/sendMessage" -d chat_id="$TG_ADMIN_CHAT_ID" -d text="GeoIlm: video yasashda xato. Log: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" || true

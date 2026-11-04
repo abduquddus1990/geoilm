@@ -20,8 +20,8 @@ MODES = {
     "poytaxt":   {"title": "Poytaxti qaysi?",     "page": "index.html",  "plan": {"oson": 3, "o‘rtacha": 4, "qiyin": 3}},
     "futbolchi": {"title": "Bu qaysi futbolchi?", "page": "player.html", "plan": {"oson": 2, "o‘rtacha": 2, "qiyin": 2}},
 }
-# Avtomatik jadval: UTC soati → format (Toshkent = UTC+5)
-SCHEDULE = {4: "davlat", 9: "poytaxt", 15: "futbolchi"}
+# Qo'lda ishga tushirishda (--mode berilmasa) soatga qarab; rejali ishda format workflow'dan keladi
+SCHEDULE = {1: "davlat", 14: "futbolchi", 16: "poytaxt"}   # 06:20, 19:00, 21:00 Toshkent
 
 STYLE = {  # xarita ko'rinishi: theme = notebook | clean | pastel | chalk
     "theme": os.getenv("GEOILM_THEME", "clean"),

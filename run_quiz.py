@@ -16,6 +16,7 @@ except ImportError:
 
 from generate import pick_questions, build_video, captions, mark_used, mode_for_now, MODES
 from publishers import telegram
+import sent_log
 
 PLATFORMS = ["youtube", "instagram", "telegram"]
 
@@ -44,6 +45,7 @@ def main():
         chats = [c.strip() for c in os.environ["TG_MANUAL_CHAT_IDS"].split(",") if c.strip()]
         telegram.send_manual(str(video), cap, chats)
         mark_used(mode, items)
+        sent_log.record(mode)
         print("Botga yuborildi:", ", ".join(chats))
         if not args.keep:
             Path(video).unlink(missing_ok=True)
