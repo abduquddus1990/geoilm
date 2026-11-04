@@ -1,0 +1,2210 @@
+{
+ "_izoh": "Faqat asosiy klublar. flag = klub joylashgan davlat (ISO-2; ENG = Angliya). Yangi futbolchi qo'shishda shu formatdan foydalaning.",
+ "oson": [
+  {
+   "id": "messi",
+   "name": "Lionel Messi",
+   "nat": "AR",
+   "clubs": [
+    [
+     "ES",
+     "Barcelona",
+     "2004–2021"
+    ],
+    [
+     "FR",
+     "Paris Saint-Germain",
+     "2021–2023"
+    ],
+    [
+     "US",
+     "Inter Miami",
+     "2023–"
+    ]
+   ]
+  },
+  {
+   "id": "ronaldo",
+   "name": "Krishtianu Ronaldu",
+   "nat": "PT",
+   "clubs": [
+    [
+     "PT",
+     "Sporting",
+     "2002–2003"
+    ],
+    [
+     "ENG",
+     "Manchester United",
+     "2003–2009"
+    ],
+    [
+     "ES",
+     "Real Madrid",
+     "2009–2018"
+    ],
+    [
+     "IT",
+     "Juventus",
+     "2018–2021"
+    ],
+    [
+     "ENG",
+     "Manchester United",
+     "2021–2022"
+    ],
+    [
+     "SA",
+     "Al-Nassr",
+     "2023–"
+    ]
+   ]
+  },
+  {
+   "id": "neymar",
+   "name": "Neymar",
+   "nat": "BR",
+   "clubs": [
+    [
+     "BR",
+     "Santos",
+     "2009–2013"
+    ],
+    [
+     "ES",
+     "Barcelona",
+     "2013–2017"
+    ],
+    [
+     "FR",
+     "Paris Saint-Germain",
+     "2017–2023"
+    ],
+    [
+     "SA",
+     "Al-Hilal",
+     "2023–2025"
+    ],
+    [
+     "BR",
+     "Santos",
+     "2025–"
+    ]
+   ]
+  },
+  {
+   "id": "maradona",
+   "name": "Diyego Maradona",
+   "nat": "AR",
+   "clubs": [
+    [
+     "AR",
+     "Argentinos Juniors",
+     "1976–1981"
+    ],
+    [
+     "AR",
+     "Boca Juniors",
+     "1981–1982"
+    ],
+    [
+     "ES",
+     "Barcelona",
+     "1982–1984"
+    ],
+    [
+     "IT",
+     "Napoli",
+     "1984–1991"
+    ],
+    [
+     "ES",
+     "Sevilla",
+     "1992–1993"
+    ],
+    [
+     "AR",
+     "Newell's Old Boys",
+     "1993"
+    ],
+    [
+     "AR",
+     "Boca Juniors",
+     "1995–1997"
+    ]
+   ]
+  },
+  {
+   "id": "zidane",
+   "name": "Zinedin Zidan",
+   "nat": "FR",
+   "clubs": [
+    [
+     "FR",
+     "Cannes",
+     "1988–1992"
+    ],
+    [
+     "FR",
+     "Bordeaux",
+     "1992–1996"
+    ],
+    [
+     "IT",
+     "Juventus",
+     "1996–2001"
+    ],
+    [
+     "ES",
+     "Real Madrid",
+     "2001–2006"
+    ]
+   ]
+  },
+  {
+   "id": "ronaldo_nazario",
+   "name": "Ronaldu Nazariu",
+   "nat": "BR",
+   "clubs": [
+    [
+     "BR",
+     "Cruzeiro",
+     "1993–1994"
+    ],
+    [
+     "NL",
+     "PSV",
+     "1994–1996"
+    ],
+    [
+     "ES",
+     "Barcelona",
+     "1996–1997"
+    ],
+    [
+     "IT",
+     "Inter",
+     "1997–2002"
+    ],
+    [
+     "ES",
+     "Real Madrid",
+     "2002–2007"
+    ],
+    [
+     "IT",
+     "Milan",
+     "2007–2008"
+    ],
+    [
+     "BR",
+     "Corinthians",
+     "2009–2011"
+    ]
+   ]
+  },
+  {
+   "id": "ronaldinho",
+   "name": "Ronaldinyo",
+   "nat": "BR",
+   "clubs": [
+    [
+     "BR",
+     "Grêmio",
+     "1998–2001"
+    ],
+    [
+     "FR",
+     "Paris Saint-Germain",
+     "2001–2003"
+    ],
+    [
+     "ES",
+     "Barcelona",
+     "2003–2008"
+    ],
+    [
+     "IT",
+     "Milan",
+     "2008–2011"
+    ],
+    [
+     "BR",
+     "Flamengo",
+     "2011–2012"
+    ],
+    [
+     "BR",
+     "Atlético Mineiro",
+     "2012–2014"
+    ]
+   ]
+  },
+  {
+   "id": "beckham",
+   "name": "Devid Bekxem",
+   "nat": "ENG",
+   "clubs": [
+    [
+     "ENG",
+     "Manchester United",
+     "1992–2003"
+    ],
+    [
+     "ES",
+     "Real Madrid",
+     "2003–2007"
+    ],
+    [
+     "US",
+     "LA Galaxy",
+     "2007–2012"
+    ],
+    [
+     "FR",
+     "Paris Saint-Germain",
+     "2013"
+    ]
+   ]
+  },
+  {
+   "id": "kaka",
+   "name": "Kaka",
+   "nat": "BR",
+   "clubs": [
+    [
+     "BR",
+     "São Paulo",
+     "2001–2003"
+    ],
+    [
+     "IT",
+     "Milan",
+     "2003–2009"
+    ],
+    [
+     "ES",
+     "Real Madrid",
+     "2009–2013"
+    ],
+    [
+     "IT",
+     "Milan",
+     "2013–2014"
+    ],
+    [
+     "US",
+     "Orlando City",
+     "2015–2017"
+    ]
+   ]
+  },
+  {
+   "id": "rooney",
+   "name": "Ueyn Runi",
+   "nat": "ENG",
+   "clubs": [
+    [
+     "ENG",
+     "Everton",
+     "2002–2004"
+    ],
+    [
+     "ENG",
+     "Manchester United",
+     "2004–2017"
+    ],
+    [
+     "ENG",
+     "Everton",
+     "2017–2018"
+    ],
+    [
+     "US",
+     "D.C. United",
+     "2018–2019"
+    ]
+   ]
+  },
+  {
+   "id": "salah",
+   "name": "Muhammad Salah",
+   "nat": "EG",
+   "clubs": [
+    [
+     "CH",
+     "Basel",
+     "2012–2014"
+    ],
+    [
+     "ENG",
+     "Chelsea",
+     "2014–2016"
+    ],
+    [
+     "IT",
+     "Roma",
+     "2015–2017"
+    ],
+    [
+     "ENG",
+     "Liverpool",
+     "2017–"
+    ]
+   ]
+  },
+  {
+   "id": "suarez",
+   "name": "Luis Suares",
+   "nat": "UY",
+   "clubs": [
+    [
+     "UY",
+     "Nacional",
+     "2005–2006"
+    ],
+    [
+     "NL",
+     "Groningen",
+     "2006–2007"
+    ],
+    [
+     "NL",
+     "Ajax",
+     "2007–2011"
+    ],
+    [
+     "ENG",
+     "Liverpool",
+     "2011–2014"
+    ],
+    [
+     "ES",
+     "Barcelona",
+     "2014–2020"
+    ],
+    [
+     "ES",
+     "Atlético Madrid",
+     "2020–2022"
+    ],
+    [
+     "BR",
+     "Grêmio",
+     "2023"
+    ],
+    [
+     "US",
+     "Inter Miami",
+     "2024–"
+    ]
+   ]
+  },
+  {
+   "id": "henry",
+   "name": "Tyerri Anri",
+   "nat": "FR",
+   "clubs": [
+    [
+     "MC",
+     "Monaco",
+     "1994–1999"
+    ],
+    [
+     "IT",
+     "Juventus",
+     "1999"
+    ],
+    [
+     "ENG",
+     "Arsenal",
+     "1999–2007"
+    ],
+    [
+     "ES",
+     "Barcelona",
+     "2007–2010"
+    ],
+    [
+     "US",
+     "New York Red Bulls",
+     "2010–2014"
+    ]
+   ]
+  },
+  {
+   "id": "debruyne",
+   "name": "Kevin de Brüyne",
+   "nat": "BE",
+   "clubs": [
+    [
+     "BE",
+     "Genk",
+     "2010–2012"
+    ],
+    [
+     "ENG",
+     "Chelsea",
+     "2012–2014"
+    ],
+    [
+     "DE",
+     "Wolfsburg",
+     "2014–2015"
+    ],
+    [
+     "ENG",
+     "Manchester City",
+     "2015–2025"
+    ],
+    [
+     "IT",
+     "Napoli",
+     "2025–"
+    ]
+   ]
+  },
+  {
+   "id": "kane",
+   "name": "Garri Keyn",
+   "nat": "ENG",
+   "clubs": [
+    [
+     "ENG",
+     "Tottenham",
+     "2010–2023"
+    ],
+    [
+     "DE",
+     "Bayern München",
+     "2023–"
+    ]
+   ]
+  }
+ ],
+ "o‘rtacha": [
+  {
+   "id": "mbappe",
+   "name": "Kilian Mbappe",
+   "nat": "FR",
+   "clubs": [
+    [
+     "MC",
+     "Monaco",
+     "2015–2017"
+    ],
+    [
+     "FR",
+     "Paris Saint-Germain",
+     "2017–2024"
+    ],
+    [
+     "ES",
+     "Real Madrid",
+     "2024–"
+    ]
+   ]
+  },
+  {
+   "id": "haaland",
+   "name": "Erling Xoland",
+   "nat": "NO",
+   "clubs": [
+    [
+     "NO",
+     "Molde",
+     "2017–2019"
+    ],
+    [
+     "AT",
+     "RB Salzburg",
+     "2019–2020"
+    ],
+    [
+     "DE",
+     "Borussia Dortmund",
+     "2020–2022"
+    ],
+    [
+     "ENG",
+     "Manchester City",
+     "2022–"
+    ]
+   ]
+  },
+  {
+   "id": "lewandowski",
+   "name": "Robert Levandovski",
+   "nat": "PL",
+   "clubs": [
+    [
+     "PL",
+     "Lech Poznań",
+     "2008–2010"
+    ],
+    [
+     "DE",
+     "Borussia Dortmund",
+     "2010–2014"
+    ],
+    [
+     "DE",
+     "Bayern München",
+     "2014–2022"
+    ],
+    [
+     "ES",
+     "Barcelona",
+     "2022–"
+    ]
+   ]
+  },
+  {
+   "id": "torres",
+   "name": "Fernando Torres",
+   "nat": "ES",
+   "clubs": [
+    [
+     "ES",
+     "Atlético Madrid",
+     "2001–2007"
+    ],
+    [
+     "ENG",
+     "Liverpool",
+     "2007–2011"
+    ],
+    [
+     "ENG",
+     "Chelsea",
+     "2011–2014"
+    ],
+    [
+     "IT",
+     "Milan",
+     "2014–2016"
+    ],
+    [
+     "ES",
+     "Atlético Madrid",
+     "2015–2018"
+    ],
+    [
+     "JP",
+     "Sagan Tosu",
+     "2018–2019"
+    ]
+   ]
+  },
+  {
+   "id": "lampard",
+   "name": "Frank Lempard",
+   "nat": "ENG",
+   "clubs": [
+    [
+     "ENG",
+     "West Ham",
+     "1995–2001"
+    ],
+    [
+     "ENG",
+     "Chelsea",
+     "2001–2014"
+    ],
+    [
+     "ENG",
+     "Manchester City",
+     "2014–2015"
+    ],
+    [
+     "US",
+     "New York City",
+     "2015"
+    ]
+   ]
+  },
+  {
+   "id": "drogba",
+   "name": "Didye Drogba",
+   "nat": "CI",
+   "clubs": [
+    [
+     "FR",
+     "Le Mans",
+     "1998–2002"
+    ],
+    [
+     "FR",
+     "Guingamp",
+     "2002–2003"
+    ],
+    [
+     "FR",
+     "Marseille",
+     "2003–2004"
+    ],
+    [
+     "ENG",
+     "Chelsea",
+     "2004–2012"
+    ],
+    [
+     "CN",
+     "Shanghai Shenhua",
+     "2012"
+    ],
+    [
+     "TR",
+     "Galatasaray",
+     "2013–2014"
+    ],
+    [
+     "ENG",
+     "Chelsea",
+     "2014–2015"
+    ],
+    [
+     "CA",
+     "Montreal Impact",
+     "2015–2016"
+    ]
+   ]
+  },
+  {
+   "id": "etoo",
+   "name": "Samuel Eto‘o",
+   "nat": "CM",
+   "clubs": [
+    [
+     "ES",
+     "Mallorca",
+     "2000–2004"
+    ],
+    [
+     "ES",
+     "Barcelona",
+     "2004–2009"
+    ],
+    [
+     "IT",
+     "Inter",
+     "2009–2011"
+    ],
+    [
+     "RU",
+     "Anzhi",
+     "2011–2013"
+    ],
+    [
+     "ENG",
+     "Chelsea",
+     "2013–2014"
+    ],
+    [
+     "TR",
+     "Antalyaspor",
+     "2015–2018"
+    ]
+   ]
+  },
+  {
+   "id": "raul",
+   "name": "Raul Gonsales",
+   "nat": "ES",
+   "clubs": [
+    [
+     "ES",
+     "Real Madrid",
+     "1994–2010"
+    ],
+    [
+     "DE",
+     "Schalke 04",
+     "2010–2012"
+    ],
+    [
+     "QA",
+     "Al-Sadd",
+     "2012–2014"
+    ],
+    [
+     "US",
+     "New York Cosmos",
+     "2014–2015"
+    ]
+   ]
+  },
+  {
+   "id": "figo",
+   "name": "Luish Figu",
+   "nat": "PT",
+   "clubs": [
+    [
+     "PT",
+     "Sporting",
+     "1989–1995"
+    ],
+    [
+     "ES",
+     "Barcelona",
+     "1995–2000"
+    ],
+    [
+     "ES",
+     "Real Madrid",
+     "2000–2005"
+    ],
+    [
+     "IT",
+     "Inter",
+     "2005–2009"
+    ]
+   ]
+  },
+  {
+   "id": "shevchenko",
+   "name": "Andriy Shevchenko",
+   "nat": "UA",
+   "clubs": [
+    [
+     "UA",
+     "Dynamo Kyiv",
+     "1994–1999"
+    ],
+    [
+     "IT",
+     "Milan",
+     "1999–2006"
+    ],
+    [
+     "ENG",
+     "Chelsea",
+     "2006–2009"
+    ],
+    [
+     "UA",
+     "Dynamo Kyiv",
+     "2009–2012"
+    ]
+   ]
+  },
+  {
+   "id": "ozil",
+   "name": "Mesut Ozil",
+   "nat": "DE",
+   "clubs": [
+    [
+     "DE",
+     "Schalke 04",
+     "2006–2008"
+    ],
+    [
+     "DE",
+     "Werder Bremen",
+     "2008–2010"
+    ],
+    [
+     "ES",
+     "Real Madrid",
+     "2010–2013"
+    ],
+    [
+     "ENG",
+     "Arsenal",
+     "2013–2021"
+    ],
+    [
+     "TR",
+     "Fenerbahçe",
+     "2021–2023"
+    ]
+   ]
+  },
+  {
+   "id": "ramos",
+   "name": "Serxio Ramos",
+   "nat": "ES",
+   "clubs": [
+    [
+     "ES",
+     "Sevilla",
+     "2003–2005"
+    ],
+    [
+     "ES",
+     "Real Madrid",
+     "2005–2021"
+    ],
+    [
+     "FR",
+     "Paris Saint-Germain",
+     "2021–2023"
+    ],
+    [
+     "ES",
+     "Sevilla",
+     "2023–2024"
+    ],
+    [
+     "MX",
+     "Monterrey",
+     "2024–"
+    ]
+   ]
+  },
+  {
+   "id": "cavani",
+   "name": "Edinson Kavani",
+   "nat": "UY",
+   "clubs": [
+    [
+     "IT",
+     "Palermo",
+     "2007–2010"
+    ],
+    [
+     "IT",
+     "Napoli",
+     "2010–2013"
+    ],
+    [
+     "FR",
+     "Paris Saint-Germain",
+     "2013–2020"
+    ],
+    [
+     "ENG",
+     "Manchester United",
+     "2020–2022"
+    ],
+    [
+     "ES",
+     "Valencia",
+     "2022–2023"
+    ],
+    [
+     "AR",
+     "Boca Juniors",
+     "2023–"
+    ]
+   ]
+  },
+  {
+   "id": "aguero",
+   "name": "Serxio Aguero",
+   "nat": "AR",
+   "clubs": [
+    [
+     "AR",
+     "Independiente",
+     "2003–2006"
+    ],
+    [
+     "ES",
+     "Atlético Madrid",
+     "2006–2011"
+    ],
+    [
+     "ENG",
+     "Manchester City",
+     "2011–2021"
+    ],
+    [
+     "ES",
+     "Barcelona",
+     "2021"
+    ]
+   ]
+  },
+  {
+   "id": "dimaria",
+   "name": "Anxel Di Mariya",
+   "nat": "AR",
+   "clubs": [
+    [
+     "AR",
+     "Rosario Central",
+     "2005–2007"
+    ],
+    [
+     "PT",
+     "Benfica",
+     "2007–2010"
+    ],
+    [
+     "ES",
+     "Real Madrid",
+     "2010–2014"
+    ],
+    [
+     "ENG",
+     "Manchester United",
+     "2014–2015"
+    ],
+    [
+     "FR",
+     "Paris Saint-Germain",
+     "2015–2022"
+    ],
+    [
+     "IT",
+     "Juventus",
+     "2022–2023"
+    ],
+    [
+     "PT",
+     "Benfica",
+     "2023–2024"
+    ],
+    [
+     "AR",
+     "Rosario Central",
+     "2025–"
+    ]
+   ]
+  },
+  {
+   "id": "hazard",
+   "name": "Eden Azar",
+   "nat": "BE",
+   "clubs": [
+    [
+     "FR",
+     "Lille",
+     "2007–2012"
+    ],
+    [
+     "ENG",
+     "Chelsea",
+     "2012–2019"
+    ],
+    [
+     "ES",
+     "Real Madrid",
+     "2019–2023"
+    ]
+   ]
+  },
+  {
+   "id": "pogba",
+   "name": "Pol Pogba",
+   "nat": "FR",
+   "clubs": [
+    [
+     "ENG",
+     "Manchester United",
+     "2009–2012"
+    ],
+    [
+     "IT",
+     "Juventus",
+     "2012–2016"
+    ],
+    [
+     "ENG",
+     "Manchester United",
+     "2016–2022"
+    ],
+    [
+     "IT",
+     "Juventus",
+     "2022–2024"
+    ]
+   ]
+  },
+  {
+   "id": "mahrez",
+   "name": "Riyod Mahrez",
+   "nat": "DZ",
+   "clubs": [
+    [
+     "FR",
+     "Le Havre",
+     "2010–2014"
+    ],
+    [
+     "ENG",
+     "Leicester City",
+     "2014–2018"
+    ],
+    [
+     "ENG",
+     "Manchester City",
+     "2018–2023"
+    ],
+    [
+     "SA",
+     "Al-Ahli",
+     "2023–"
+    ]
+   ]
+  },
+  {
+   "id": "mane",
+   "name": "Sadio Mane",
+   "nat": "SN",
+   "clubs": [
+    [
+     "FR",
+     "Metz",
+     "2011–2012"
+    ],
+    [
+     "AT",
+     "RB Salzburg",
+     "2012–2014"
+    ],
+    [
+     "ENG",
+     "Southampton",
+     "2014–2016"
+    ],
+    [
+     "ENG",
+     "Liverpool",
+     "2016–2022"
+    ],
+    [
+     "DE",
+     "Bayern München",
+     "2022–2023"
+    ],
+    [
+     "SA",
+     "Al-Nassr",
+     "2023–"
+    ]
+   ]
+  },
+  {
+   "id": "son",
+   "name": "Son Xyon Min",
+   "nat": "KR",
+   "clubs": [
+    [
+     "DE",
+     "Hamburg",
+     "2010–2013"
+    ],
+    [
+     "DE",
+     "Bayer Leverkusen",
+     "2013–2015"
+    ],
+    [
+     "ENG",
+     "Tottenham",
+     "2015–2025"
+    ],
+    [
+     "US",
+     "LAFC",
+     "2025–"
+    ]
+   ]
+  },
+  {
+   "id": "lukaku",
+   "name": "Romelu Lukaku",
+   "nat": "BE",
+   "clubs": [
+    [
+     "BE",
+     "Anderlecht",
+     "2009–2011"
+    ],
+    [
+     "ENG",
+     "Chelsea",
+     "2011–2014"
+    ],
+    [
+     "ENG",
+     "Everton",
+     "2014–2017"
+    ],
+    [
+     "ENG",
+     "Manchester United",
+     "2017–2019"
+    ],
+    [
+     "IT",
+     "Inter",
+     "2019–2021"
+    ],
+    [
+     "ENG",
+     "Chelsea",
+     "2021–2022"
+    ],
+    [
+     "IT",
+     "Napoli",
+     "2024–"
+    ]
+   ]
+  },
+  {
+   "id": "kroos",
+   "name": "Toni Kroos",
+   "nat": "DE",
+   "clubs": [
+    [
+     "DE",
+     "Bayern München",
+     "2007–2014"
+    ],
+    [
+     "ES",
+     "Real Madrid",
+     "2014–2024"
+    ]
+   ]
+  },
+  {
+   "id": "iniesta",
+   "name": "Andres Iniesta",
+   "nat": "ES",
+   "clubs": [
+    [
+     "ES",
+     "Barcelona",
+     "2002–2018"
+    ],
+    [
+     "JP",
+     "Vissel Kobe",
+     "2018–2023"
+    ],
+    [
+     "AE",
+     "Emirates Club",
+     "2023–2024"
+    ]
+   ]
+  },
+  {
+   "id": "casillas",
+   "name": "Iker Kasilyas",
+   "nat": "ES",
+   "clubs": [
+    [
+     "ES",
+     "Real Madrid",
+     "1999–2015"
+    ],
+    [
+     "PT",
+     "Porto",
+     "2015–2020"
+    ]
+   ]
+  }
+ ],
+ "qiyin": [
+  {
+   "id": "modric",
+   "name": "Luka Modrich",
+   "nat": "HR",
+   "clubs": [
+    [
+     "HR",
+     "Dinamo Zagreb",
+     "2003–2008"
+    ],
+    [
+     "ENG",
+     "Tottenham",
+     "2008–2012"
+    ],
+    [
+     "ES",
+     "Real Madrid",
+     "2012–2025"
+    ],
+    [
+     "IT",
+     "Milan",
+     "2025–"
+    ]
+   ]
+  },
+  {
+   "id": "ibrahimovic",
+   "name": "Zlatan Ibragimovich",
+   "nat": "SE",
+   "clubs": [
+    [
+     "SE",
+     "Malmö",
+     "1999–2001"
+    ],
+    [
+     "NL",
+     "Ajax",
+     "2001–2004"
+    ],
+    [
+     "IT",
+     "Juventus",
+     "2004–2006"
+    ],
+    [
+     "IT",
+     "Inter",
+     "2006–2009"
+    ],
+    [
+     "ES",
+     "Barcelona",
+     "2009–2011"
+    ],
+    [
+     "IT",
+     "Milan",
+     "2010–2012"
+    ],
+    [
+     "FR",
+     "Paris Saint-Germain",
+     "2012–2016"
+    ],
+    [
+     "ENG",
+     "Manchester United",
+     "2016–2018"
+    ],
+    [
+     "US",
+     "LA Galaxy",
+     "2018–2019"
+    ],
+    [
+     "IT",
+     "Milan",
+     "2020–2023"
+    ]
+   ]
+  },
+  {
+   "id": "benzema",
+   "name": "Karim Benzema",
+   "nat": "FR",
+   "clubs": [
+    [
+     "FR",
+     "Lyon",
+     "2004–2009"
+    ],
+    [
+     "ES",
+     "Real Madrid",
+     "2009–2023"
+    ],
+    [
+     "SA",
+     "Al-Ittihad",
+     "2023–"
+    ]
+   ]
+  },
+  {
+   "id": "shomurodov",
+   "name": "Eldor Shomurodov",
+   "nat": "UZ",
+   "clubs": [
+    [
+     "UZ",
+     "Bunyodkor",
+     "2015–2017"
+    ],
+    [
+     "RU",
+     "Rostov",
+     "2017–2020"
+    ],
+    [
+     "IT",
+     "Genoa",
+     "2020–2021"
+    ],
+    [
+     "IT",
+     "Roma",
+     "2021–2024"
+    ],
+    [
+     "TR",
+     "Başakşehir",
+     "2024–"
+    ]
+   ]
+  },
+  {
+   "id": "cruyff",
+   "name": "Yoxan Kroyf",
+   "nat": "NL",
+   "clubs": [
+    [
+     "NL",
+     "Ajax",
+     "1964–1973"
+    ],
+    [
+     "ES",
+     "Barcelona",
+     "1973–1978"
+    ],
+    [
+     "US",
+     "Los Angeles Aztecs",
+     "1979"
+    ],
+    [
+     "US",
+     "Washington Diplomats",
+     "1980–1981"
+    ],
+    [
+     "ES",
+     "Levante",
+     "1981"
+    ],
+    [
+     "NL",
+     "Ajax",
+     "1981–1983"
+    ],
+    [
+     "NL",
+     "Feyenoord",
+     "1983–1984"
+    ]
+   ]
+  },
+  {
+   "id": "platini",
+   "name": "Mishel Platini",
+   "nat": "FR",
+   "clubs": [
+    [
+     "FR",
+     "Nancy",
+     "1972–1979"
+    ],
+    [
+     "FR",
+     "Saint-Étienne",
+     "1979–1982"
+    ],
+    [
+     "IT",
+     "Juventus",
+     "1982–1987"
+    ]
+   ]
+  },
+  {
+   "id": "baggio",
+   "name": "Roberto Baddjo",
+   "nat": "IT",
+   "clubs": [
+    [
+     "IT",
+     "Vicenza",
+     "1982–1985"
+    ],
+    [
+     "IT",
+     "Fiorentina",
+     "1985–1990"
+    ],
+    [
+     "IT",
+     "Juventus",
+     "1990–1995"
+    ],
+    [
+     "IT",
+     "Milan",
+     "1995–1997"
+    ],
+    [
+     "IT",
+     "Bologna",
+     "1997–1998"
+    ],
+    [
+     "IT",
+     "Inter",
+     "1998–2000"
+    ],
+    [
+     "IT",
+     "Brescia",
+     "2000–2004"
+    ]
+   ]
+  },
+  {
+   "id": "gullit",
+   "name": "Rud Gullit",
+   "nat": "NL",
+   "clubs": [
+    [
+     "NL",
+     "Haarlem",
+     "1979–1982"
+    ],
+    [
+     "NL",
+     "Feyenoord",
+     "1982–1985"
+    ],
+    [
+     "NL",
+     "PSV",
+     "1985–1987"
+    ],
+    [
+     "IT",
+     "Milan",
+     "1987–1993"
+    ],
+    [
+     "IT",
+     "Sampdoria",
+     "1993–1994"
+    ],
+    [
+     "ENG",
+     "Chelsea",
+     "1995–1998"
+    ]
+   ]
+  },
+  {
+   "id": "romario",
+   "name": "Romariu",
+   "nat": "BR",
+   "clubs": [
+    [
+     "BR",
+     "Vasco da Gama",
+     "1985–1988"
+    ],
+    [
+     "NL",
+     "PSV",
+     "1988–1993"
+    ],
+    [
+     "ES",
+     "Barcelona",
+     "1993–1995"
+    ],
+    [
+     "BR",
+     "Flamengo",
+     "1995–1996"
+    ],
+    [
+     "ES",
+     "Valencia",
+     "1996"
+    ]
+   ]
+  },
+  {
+   "id": "batistuta",
+   "name": "Gabriel Batistuta",
+   "nat": "AR",
+   "clubs": [
+    [
+     "AR",
+     "Newell's Old Boys",
+     "1988"
+    ],
+    [
+     "AR",
+     "River Plate",
+     "1989"
+    ],
+    [
+     "AR",
+     "Boca Juniors",
+     "1990–1991"
+    ],
+    [
+     "IT",
+     "Fiorentina",
+     "1991–2000"
+    ],
+    [
+     "IT",
+     "Roma",
+     "2000–2003"
+    ],
+    [
+     "QA",
+     "Al-Arabi",
+     "2003–2005"
+    ]
+   ]
+  },
+  {
+   "id": "zola",
+   "name": "Jankarlo Zola",
+   "nat": "IT",
+   "clubs": [
+    [
+     "IT",
+     "Napoli",
+     "1989–1993"
+    ],
+    [
+     "IT",
+     "Parma",
+     "1993–1996"
+    ],
+    [
+     "ENG",
+     "Chelsea",
+     "1996–2003"
+    ],
+    [
+     "IT",
+     "Cagliari",
+     "2003–2005"
+    ]
+   ]
+  },
+  {
+   "id": "bergkamp",
+   "name": "Denis Berkamp",
+   "nat": "NL",
+   "clubs": [
+    [
+     "NL",
+     "Ajax",
+     "1986–1993"
+    ],
+    [
+     "IT",
+     "Inter",
+     "1993–1995"
+    ],
+    [
+     "ENG",
+     "Arsenal",
+     "1995–2006"
+    ]
+   ]
+  },
+  {
+   "id": "kluivert",
+   "name": "Patrik Kluyvert",
+   "nat": "NL",
+   "clubs": [
+    [
+     "NL",
+     "Ajax",
+     "1994–1998"
+    ],
+    [
+     "IT",
+     "Milan",
+     "1997–1998"
+    ],
+    [
+     "ES",
+     "Barcelona",
+     "1998–2004"
+    ],
+    [
+     "ENG",
+     "Newcastle",
+     "2004–2005"
+    ],
+    [
+     "ES",
+     "Valencia",
+     "2005–2006"
+    ],
+    [
+     "NL",
+     "PSV",
+     "2006–2007"
+    ]
+   ]
+  },
+  {
+   "id": "pirlo",
+   "name": "Andrea Pirlo",
+   "nat": "IT",
+   "clubs": [
+    [
+     "IT",
+     "Brescia",
+     "1995–1998"
+    ],
+    [
+     "IT",
+     "Inter",
+     "1998–2001"
+    ],
+    [
+     "IT",
+     "Milan",
+     "2001–2011"
+    ],
+    [
+     "IT",
+     "Juventus",
+     "2011–2015"
+    ],
+    [
+     "US",
+     "New York City",
+     "2015–2017"
+    ]
+   ]
+  },
+  {
+   "id": "buffon",
+   "name": "Jedjanluidji Buffon",
+   "nat": "IT",
+   "clubs": [
+    [
+     "IT",
+     "Parma",
+     "1995–2001"
+    ],
+    [
+     "IT",
+     "Juventus",
+     "2001–2018"
+    ],
+    [
+     "FR",
+     "Paris Saint-Germain",
+     "2018–2019"
+    ],
+    [
+     "IT",
+     "Juventus",
+     "2019–2021"
+    ],
+    [
+     "IT",
+     "Parma",
+     "2021–2023"
+    ]
+   ]
+  },
+  {
+   "id": "seedorf",
+   "name": "Klarens Zeedorf",
+   "nat": "NL",
+   "clubs": [
+    [
+     "NL",
+     "Ajax",
+     "1992–1995"
+    ],
+    [
+     "IT",
+     "Sampdoria",
+     "1995–1996"
+    ],
+    [
+     "ES",
+     "Real Madrid",
+     "1996–2000"
+    ],
+    [
+     "IT",
+     "Inter",
+     "2000–2002"
+    ],
+    [
+     "IT",
+     "Milan",
+     "2002–2012"
+    ],
+    [
+     "BR",
+     "Botafogo",
+     "2012–2014"
+    ]
+   ]
+  },
+  {
+   "id": "stoichkov",
+   "name": "Xristo Stoichkov",
+   "nat": "BG",
+   "clubs": [
+    [
+     "BG",
+     "CSKA Sofia",
+     "1984–1990"
+    ],
+    [
+     "ES",
+     "Barcelona",
+     "1990–1995"
+    ],
+    [
+     "IT",
+     "Parma",
+     "1995–1996"
+    ],
+    [
+     "ES",
+     "Barcelona",
+     "1996–1998"
+    ],
+    [
+     "JP",
+     "Kashiwa Reysol",
+     "1998–1999"
+    ],
+    [
+     "US",
+     "Chicago Fire",
+     "2000–2002"
+    ]
+   ]
+  },
+  {
+   "id": "hagi",
+   "name": "Georgi Xaji",
+   "nat": "RO",
+   "clubs": [
+    [
+     "RO",
+     "Steaua București",
+     "1987–1990"
+    ],
+    [
+     "ES",
+     "Real Madrid",
+     "1990–1992"
+    ],
+    [
+     "IT",
+     "Brescia",
+     "1992–1994"
+    ],
+    [
+     "ES",
+     "Barcelona",
+     "1994–1996"
+    ],
+    [
+     "TR",
+     "Galatasaray",
+     "1996–2001"
+    ]
+   ]
+  },
+  {
+   "id": "weah",
+   "name": "Jorj Veah",
+   "nat": "LR",
+   "clubs": [
+    [
+     "MC",
+     "Monaco",
+     "1988–1992"
+    ],
+    [
+     "FR",
+     "Paris Saint-Germain",
+     "1992–1995"
+    ],
+    [
+     "IT",
+     "Milan",
+     "1995–2000"
+    ],
+    [
+     "ENG",
+     "Chelsea",
+     "2000"
+    ],
+    [
+     "ENG",
+     "Manchester City",
+     "2000"
+    ],
+    [
+     "FR",
+     "Marseille",
+     "2000–2001"
+    ],
+    [
+     "AE",
+     "Al-Jazira",
+     "2001"
+    ]
+   ]
+  },
+  {
+   "id": "okocha",
+   "name": "Jay-Jay Okocha",
+   "nat": "NG",
+   "clubs": [
+    [
+     "DE",
+     "Eintracht Frankfurt",
+     "1992–1996"
+    ],
+    [
+     "TR",
+     "Fenerbahçe",
+     "1996–1998"
+    ],
+    [
+     "FR",
+     "Paris Saint-Germain",
+     "1998–2002"
+    ],
+    [
+     "ENG",
+     "Bolton",
+     "2002–2006"
+    ],
+    [
+     "QA",
+     "Qatar SC",
+     "2006–2007"
+    ],
+    [
+     "ENG",
+     "Hull City",
+     "2007–2008"
+    ]
+   ]
+  },
+  {
+   "id": "cafu",
+   "name": "Kafu",
+   "nat": "BR",
+   "clubs": [
+    [
+     "BR",
+     "São Paulo",
+     "1990–1995"
+    ],
+    [
+     "ES",
+     "Real Zaragoza",
+     "1995"
+    ],
+    [
+     "BR",
+     "Palmeiras",
+     "1995–1997"
+    ],
+    [
+     "IT",
+     "Roma",
+     "1997–2003"
+    ],
+    [
+     "IT",
+     "Milan",
+     "2003–2008"
+    ]
+   ]
+  },
+  {
+   "id": "robertocarlos",
+   "name": "Roberto Karlos",
+   "nat": "BR",
+   "clubs": [
+    [
+     "BR",
+     "Palmeiras",
+     "1993–1995"
+    ],
+    [
+     "IT",
+     "Inter",
+     "1995–1996"
+    ],
+    [
+     "ES",
+     "Real Madrid",
+     "1996–2007"
+    ],
+    [
+     "TR",
+     "Fenerbahçe",
+     "2007–2009"
+    ],
+    [
+     "BR",
+     "Corinthians",
+     "2010"
+    ],
+    [
+     "RU",
+     "Anzhi",
+     "2011–2012"
+    ]
+   ]
+  },
+  {
+   "id": "cannavaro",
+   "name": "Fabio Kannavaro",
+   "nat": "IT",
+   "clubs": [
+    [
+     "IT",
+     "Napoli",
+     "1992–1995"
+    ],
+    [
+     "IT",
+     "Parma",
+     "1995–2002"
+    ],
+    [
+     "IT",
+     "Inter",
+     "2002–2004"
+    ],
+    [
+     "IT",
+     "Juventus",
+     "2004–2006"
+    ],
+    [
+     "ES",
+     "Real Madrid",
+     "2006–2009"
+    ],
+    [
+     "IT",
+     "Juventus",
+     "2009–2010"
+    ],
+    [
+     "AE",
+     "Al-Ahli",
+     "2010–2011"
+    ]
+   ]
+  },
+  {
+   "id": "nistelrooy",
+   "name": "Rud van Nistelroy",
+   "nat": "NL",
+   "clubs": [
+    [
+     "NL",
+     "PSV",
+     "1998–2001"
+    ],
+    [
+     "ENG",
+     "Manchester United",
+     "2001–2006"
+    ],
+    [
+     "ES",
+     "Real Madrid",
+     "2006–2010"
+    ],
+    [
+     "DE",
+     "Hamburg",
+     "2010–2011"
+    ],
+    [
+     "ES",
+     "Málaga",
+     "2011–2012"
+    ]
+   ]
+  },
+  {
+   "id": "vieira",
+   "name": "Patrik Vieyra",
+   "nat": "FR",
+   "clubs": [
+    [
+     "FR",
+     "Cannes",
+     "1993–1995"
+    ],
+    [
+     "IT",
+     "Milan",
+     "1995–1996"
+    ],
+    [
+     "ENG",
+     "Arsenal",
+     "1996–2005"
+    ],
+    [
+     "IT",
+     "Juventus",
+     "2005–2006"
+    ],
+    [
+     "IT",
+     "Inter",
+     "2006–2010"
+    ],
+    [
+     "ENG",
+     "Manchester City",
+     "2010–2011"
+    ]
+   ]
+  },
+  {
+   "id": "rivaldo",
+   "name": "Rivaldu",
+   "nat": "BR",
+   "clubs": [
+    [
+     "BR",
+     "Palmeiras",
+     "1994–1996"
+    ],
+    [
+     "ES",
+     "Deportivo La Coruña",
+     "1996–1997"
+    ],
+    [
+     "ES",
+     "Barcelona",
+     "1997–2002"
+    ],
+    [
+     "IT",
+     "Milan",
+     "2002–2004"
+    ],
+    [
+     "GR",
+     "Olympiacos",
+     "2004–2007"
+    ]
+   ]
+  },
+  {
+   "id": "tevez",
+   "name": "Karlos Tevez",
+   "nat": "AR",
+   "clubs": [
+    [
+     "AR",
+     "Boca Juniors",
+     "2001–2004"
+    ],
+    [
+     "BR",
+     "Corinthians",
+     "2005–2006"
+    ],
+    [
+     "ENG",
+     "West Ham",
+     "2006–2007"
+    ],
+    [
+     "ENG",
+     "Manchester United",
+     "2007–2009"
+    ],
+    [
+     "ENG",
+     "Manchester City",
+     "2009–2013"
+    ],
+    [
+     "IT",
+     "Juventus",
+     "2013–2015"
+    ],
+    [
+     "CN",
+     "Shanghai Shenhua",
+     "2017"
+    ]
+   ]
+  },
+  {
+   "id": "falcao",
+   "name": "Radamel Falkao",
+   "nat": "CO",
+   "clubs": [
+    [
+     "AR",
+     "River Plate",
+     "2005–2009"
+    ],
+    [
+     "PT",
+     "Porto",
+     "2009–2011"
+    ],
+    [
+     "ES",
+     "Atlético Madrid",
+     "2011–2013"
+    ],
+    [
+     "MC",
+     "Monaco",
+     "2013–2019"
+    ],
+    [
+     "TR",
+     "Galatasaray",
+     "2019–2021"
+    ]
+   ]
+  },
+  {
+   "id": "yayatoure",
+   "name": "Yaya Ture",
+   "nat": "CI",
+   "clubs": [
+    [
+     "UA",
+     "Metalurh Donetsk",
+     "2003–2005"
+    ],
+    [
+     "GR",
+     "Olympiacos",
+     "2005–2006"
+    ],
+    [
+     "MC",
+     "Monaco",
+     "2006–2007"
+    ],
+    [
+     "ES",
+     "Barcelona",
+     "2007–2010"
+    ],
+    [
+     "ENG",
+     "Manchester City",
+     "2010–2018"
+    ]
+   ]
+  }
+ ]
+}

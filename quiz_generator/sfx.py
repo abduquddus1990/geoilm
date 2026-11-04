@@ -2,7 +2,7 @@
 import json, sys, wave
 import numpy as np
 
-def build(events_path: str, out_path: str) -> float:
+def build(events_path: str, out_path: str, voice_wav: str | None = None) -> float:
     sr = 44100
     E = json.load(open(events_path, encoding="utf-8"))
     D = E["D"]
@@ -32,6 +32,14 @@ def build(events_path: str, out_path: str) -> float:
             put(tick, e["cd"] + s, .35 if s < 2 else .45)
         put(ding, e["rev"], .3)
     put(ding, D - 2.6, .35)
+    if voice_wav:  # o'z ovozing: har savol boshida
+        with wave.open(voice_wav, "rb") as w:
+            v = np.frombuffer(w.readframes(w.getnframes()), dtype=np.int16).astype(np.float64) / 32768
+        v = v / max(1e-9, np.abs(v).max())
+        a /= max(1e-9, np.abs(a).max())
+        a *= 0.55
+        for e in E["ev"]:
+            put(v, e["start"] + 0.15, 0.9)
 
     a = a / max(1e-9, np.abs(a).max()) * .8
     with wave.open(out_path, "wb") as w:

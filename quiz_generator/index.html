@@ -14,13 +14,15 @@ svg{display:block}
   <filter id="wob" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="3.2"/></filter>
   <radialGradient id="vig" cx="50%" cy="48%" r="72%"><stop offset="62%" stop-color="#000" stop-opacity="0"/><stop offset="100%" stop-color="#4a3c20" stop-opacity=".2"/></radialGradient>
 </defs>
-<rect width="720" height="1280" fill="#fbf8ef"/>
-<rect width="720" height="1280" fill="url(#sea)"/>
-<g id="map" filter="url(#wob)"><path id="land" fill="#fffdf7"/><path id="borders" fill="none" stroke="#2c3b75" stroke-width="1.2" stroke-linejoin="round"/></g>
-<rect width="720" height="1280" fill="url(#grid)"/>
-<line x1="62" y1="0" x2="62" y2="1280" stroke="#d9534f" stroke-width="1.6" opacity=".55"/>
+<rect id="bg" width="720" height="1280" fill="#fbf8ef"/>
+<rect id="seaHatch" width="720" height="1280" fill="url(#sea)"/>
+<g id="map" filter="url(#wob)"><path id="land" fill="#fffdf7"/><g id="pastel"></g><path id="borders" fill="none" stroke="#2c3b75" stroke-width="1.2" stroke-linejoin="round"/></g>
+<rect id="gridR" width="720" height="1280" fill="url(#grid)"/>
+<line id="margin" x1="62" y1="0" x2="62" y2="1280" stroke="#d9534f" stroke-width="1.6" opacity=".55"/>
+<g id="labels"></g>
 <g id="hl"></g>
 <image id="noise" width="720" height="1280" opacity=".55"/>
+<g id="globe"></g>
 <g id="ui"></g>
 <rect width="720" height="1280" fill="url(#vig)"/>
 </svg>
@@ -28,6 +30,7 @@ svg{display:block}
 <script src="node_modules/topojson-client/dist/topojson-client.min.js"></script>
 <script src="node_modules/roughjs/bundled/rough.js"></script>
 <script src="node_modules/world-atlas/world.js"></script>
+<script src="node_modules/world-atlas/world110.js"></script>
 <script src="quiz.js"></script>
 <script>
 const Q=window.QUIZ, INK='#24305e', NS='http://www.w3.org/2000/svg';
@@ -35,6 +38,22 @@ const LIST=Q.items; // [{id,a2,name,level}]
 const LEVEL_COLOR={'oson':'#1f8a5a','o‘rtacha':'#c98a12','qiyin':'#c0392b'};
 const COLORS=['#7b3fa0','#c0392b','#1f7a5a','#b5651d','#2e5aa8','#a0306b'];
 const INTRO=1.2, PER=5.2, OUTRO=2.6, T_FLY=1.0, T_DRAW0=0.9, T_DRAW1=2.0, T_CD0=1.1, T_REV=4.1;
+const ST=Object.assign({theme:'notebook',globe:false,labels:false,zoom:1},Q.style||{});
+const THEMES={
+ notebook:{bg:'#fbf8ef',sea:'#5f8fcc',seaOp:.38,land:'#fffdf7',border:'#2c3b75',grid:1,margin:1,noise:.55,label:'#6b7396'},
+ clean:{bg:'#d7e7f6',sea:'#7fa7d6',seaOp:.25,land:'#fffaf0',border:'#3a4a80',grid:0,margin:0,noise:.35,label:'#6b7396'},
+ pastel:{bg:'#cfe3f5',sea:'#7fa7d6',seaOp:.22,land:'#fffaf0',border:'#3a4a80',grid:0,margin:0,noise:.3,label:'#4a5275',pastel:1},
+ chalk:{bg:'#24392f',sea:'#9fc7b5',seaOp:.18,land:'#33503f',border:'#e8efe6',grid:0,margin:0,noise:.25,label:'#c9d8cc',chalk:1}};
+const TH=THEMES[ST.theme]||THEMES.notebook;
+document.getElementById('bg').setAttribute('fill',TH.bg);
+document.querySelector('#sea line').setAttribute('stroke',TH.sea);document.querySelector('#sea line').setAttribute('opacity',TH.seaOp);
+document.getElementById('land').setAttribute('fill',TH.land);
+document.getElementById('borders').setAttribute('stroke',TH.border);
+if(TH.chalk) document.getElementById('borders').setAttribute('stroke-width',1.6);
+if(!TH.grid) document.getElementById('gridR').style.display='none';
+if(!TH.margin) document.getElementById('margin').style.display='none';
+document.getElementById('noise').setAttribute('opacity',TH.noise);
+const NAMES=Q.names||{}; const CAP=Q.mode==='capital';
 const flag=a2=>String.fromCodePoint(...[...a2.toUpperCase()].map(c=>0x1F1E6+c.charCodeAt(0)-65));
 // qog'oz donadorligi (noise) — canvas orqali
 (()=>{const c=document.createElement('canvas');c.width=720;c.height=1280;const x=c.getContext('2d');const im=x.createImageData(720,1280);
@@ -57,7 +76,7 @@ const CX=360, CY=640;
 function camFor(f){
   const p=d3.geoMercator().scale(1).translate([0,0]); const b=d3.geoPath(p).bounds(frameGeom(f));
   const w=b[1][0]-b[0][0], h=b[1][1]-b[0][1];
-  return {s:Math.min(470/w,520/h), c:p.invert([(b[0][0]+b[1][0])/2,(b[0][1]+b[1][1])/2])};
+  return {s:Math.min(470/w,520/h)*ST.zoom, c:p.invert([(b[0][0]+b[1][0])/2,(b[0][1]+b[1][1])/2])};
 }
 const cams=LIST.map(it=>camFor(byId[it.id]));
 const worldCam={s:150,c:[60,30]};
@@ -81,7 +100,8 @@ text(360,138,Q.title||'Bu qaysi davlat?',70,{},header);
 header.appendChild(rc.line(190,154,530,158,R({stroke:'#c0392b',strokeWidth:3})));
 const levelTxt=text(360,194,'',34,{},header);
 const counter=text(640,1235,'',34,{color:'#5a6390'});
-const handle=text(150,1235,Q.handle||'@geoilm',32,{color:'#5a6390'});
+const handle=text(150,1235,Q.handle||'@geoilm',32,{color:TH.chalk?'#dfe8dc':'#5a6390'});
+if(TH.chalk) counter.setAttribute('fill','#dfe8dc');
 // taymer
 const timerG=el('g',{});
 el('circle',{cx:120,cy:1120,r:54,fill:'#fffdf6',stroke:'#c9c0ad','stroke-width':6},timerG);
@@ -92,30 +112,67 @@ const ARC=2*Math.PI*54; timerArc.setAttribute('stroke-dasharray',ARC);
 const revG=el('g',{}); const revCache={};
 function revealFor(i){
   if(revCache[i]) return revCache[i];
-  const g=el('g',{opacity:0},revG), name=LIST[i].name;
+  const g=el('g',{opacity:0},revG), name=CAP?LIST[i].cap:LIST[i].name;
   const w=Math.min(640,Math.max(330,name.length*32+150));
   g.appendChild(rc.rectangle(360-w/2,1035,w,120,R({fill:'#fffdf6',fillStyle:'solid',strokeWidth:2.6,seed:100+i})));
   text(395,1118,name,name.length>14?58:72,{},g);
   const f=el('text',{x:360-w/2+60,y:1114,'font-size':54,'text-anchor':'middle','font-family':'Noto Color Emoji, Segoe UI Emoji, Apple Color Emoji'},g); f.textContent=flag(LIST[i].a2);
   return revCache[i]=g;
 }
+// poytaxt rejimi: davlat nomi yorlig'i
+const cLabG=el('g',{}); const cLab={};
+function countryLabel(i){
+  if(cLab[i]) return cLab[i];
+  const g=el('g',{opacity:0},cLabG), name=LIST[i].name, w=Math.min(420,Math.max(250,name.length*26+110));
+  g.appendChild(rc.rectangle(80,250,w,84,R({fill:'#fffdf6',fillStyle:'solid',strokeWidth:2.4,seed:300+i})));
+  text(80+w/2+28,307,name,name.length>14?44:52,{},g);
+  const f=el('text',{x:118,y:306,'font-size':40,'text-anchor':'middle','font-family':'Noto Color Emoji, Segoe UI Emoji, Apple Color Emoji'},g); f.textContent=flag(LIST[i].a2);
+  return cLab[i]=g;
+}
 // yakun
 const outro=el('g',{opacity:0});
 outro.appendChild(rc.rectangle(90,470,540,300,R({fill:'#fffdf6',fillStyle:'solid',strokeWidth:2.8,seed:999})));
-text(360,560,'Nechtasini topding?',64,{},outro);
-text(360,650,'Izohda yoz 👇',58,{color:'#c0392b'},outro);
+text(360,560,'Nechtasini topdingiz?',62,{},outro);
+text(360,650,'Izohda yozing 👇',56,{color:'#c0392b'},outro);
 text(360,725,'Obuna bo‘ling — ertaga yangisi!',38,{color:'#5a6390'},outro);
 // ajratilgan davlat
 let hlCache={idx:-1};
 function buildHL(i){
   hl.innerHTML=''; setCam(cams[i]);
-  const d=path(byId[LIST[i].id]), col=COLORS[i%COLORS.length];
+  const d=path(byId[LIST[i].id]), col=TH.chalk?['#f2d16b','#f19c8f','#9fd8f0','#c5e89a'][i%4]:COLORS[i%COLORS.length];
   const solid=el('path',{d,fill:col,opacity:0},hl);
-  const g=rc.path(d,{stroke:INK,strokeWidth:2.6,roughness:.9,bowing:.6,fill:col,fillStyle:'hachure',hachureGap:5.5,fillWeight:2.2,hachureAngle:-41+i*13,seed:200+i});
+  const g=rc.path(d,{stroke:TH.chalk?'#f4f1e4':INK,strokeWidth:2.6,roughness:.9,bowing:.6,fill:col,fillStyle:'hachure',hachureGap:5.5,fillWeight:2.2,hachureAngle:-41+i*13,seed:200+i});
   hl.appendChild(g);
   const units=[...g.querySelectorAll('path')].map(p=>{const L=p.getTotalLength()||1;p.style.strokeDasharray=L+' '+L;return{p,L};});
   let tot=units.reduce((a,u)=>a+u.L,0),acc=0; units.forEach(u=>{u.a=acc/tot;acc+=u.L;u.b=acc/tot;});
-  hlCache={idx:i,units,solid};
+  let star=null;
+  if(CAP){const [x,y]=proj([LIST[i].lon,LIST[i].lat]); const pts=[];for(let k=0;k<10;k++){const a=-Math.PI/2+k*Math.PI/5, rr=k%2?9:22; pts.push([x+rr*Math.cos(a),y+rr*Math.sin(a)]);}
+    star=document.createElementNS(NS,'g'); star.setAttribute('opacity',0); hl.appendChild(star);
+    star.appendChild(rc.polygon(pts,{stroke:INK,strokeWidth:2,fill:'#f2c230',fillStyle:'solid',roughness:.7,seed:400+i}));
+    const c=document.createElementNS(NS,'circle'); c.setAttribute('cx',x);c.setAttribute('cy',y);c.setAttribute('r',34);c.setAttribute('fill','none');c.setAttribute('stroke','#c0392b');c.setAttribute('stroke-width',3); star.appendChild(c); star._c=c;}
+  hlCache={idx:i,units,solid,star}; buildLabels(i);
+}
+const pastelG=document.getElementById('pastel'), labelsG=document.getElementById('labels'), globeG=document.getElementById('globe');
+const PAL=['#f6e3b4','#d8ecc9','#f3d1d1','#d6def3','#efdcf2','#d3efe9','#f7e9d7','#e6e6c8'];
+function buildLabels(i){
+  labelsG.innerHTML=''; if(!ST.labels) return;
+  feats.forEach(f=>{ if(f.id===LIST[i].id||!NAMES[f.id]) return;
+    const a=path.area(f); if(a<5000) return; const [x,y]=path.centroid(f);
+    if(x<90||x>630||y<260||y>1000) return;
+    const t=el('text',{x,y,'font-family':'Hand','font-size':a>40000?30:24,'font-weight':700,fill:TH.label,'text-anchor':'middle',opacity:.85},labelsG); t.textContent=NAMES[f.id];});
+}
+const land110=topojson.feature(WORLD110,WORLD110.objects.land);
+const gProj=d3.geoOrthographic().scale(80).translate([600,345]).clipAngle(90), gPath=d3.geoPath(gProj);
+const centroids=LIST.map(it=>d3.geoCentroid(frameGeom(byId[it.id])));
+let gKey='';
+function drawGlobe(i,lt){
+  let c=[60,30]; if(i!==null){const b=centroids[i]; const a=i>0?centroids[i-1]:[60,30];
+    const k=lt<T_FLY?ease(lt/T_FLY):1; let dl=b[0]-a[0]; if(dl>180)dl-=360; if(dl<-180)dl+=360; c=[a[0]+dl*k,a[1]+(b[1]-a[1])*k];}
+  const k2=i+':'+c[0].toFixed(2)+','+c[1].toFixed(2); if(k2===gKey) return; gKey=k2; globeG.innerHTML='';
+  gProj.rotate([-c[0],-c[1]]);
+  el('circle',{cx:600,cy:345,r:80,fill:TH.chalk?'#2c4a3c':'#d4e5f6',stroke:TH.chalk?'#e8efe6':INK,'stroke-width':2.5},globeG);
+  el('path',{d:gPath(land110),fill:TH.chalk?'#4d6b58':'#fffaf0',stroke:TH.chalk?'#cfdccf':'#8a93b5','stroke-width':.5},globeG);
+  if(i!==null){el('path',{d:gPath(byId[LIST[i].id]),fill:'#c0392b'},globeG); const p=gProj(c); if(p) el('circle',{cx:p[0],cy:p[1],r:6,fill:'none',stroke:'#c0392b','stroke-width':2.5},globeG);}
 }
 const ease=x=>x<0?0:x>1?1:x*x*(3-2*x);
 let lastKey='';
@@ -127,11 +184,13 @@ window.render=function(t){
   else {cam=cams[N-1]; i=N; lt=t-INTRO-PER*N;}
   setCam(cam);
   const key=cam.s.toFixed(3)+','+cam.c[0].toFixed(4)+','+cam.c[1].toFixed(4);
-  if(key!==lastKey){lastKey=key; landEl.setAttribute('d',path(landAll)); bordEl.setAttribute('d',path(mesh));}
+  if(key!==lastKey){lastKey=key; landEl.setAttribute('d',path(landAll)); bordEl.setAttribute('d',path(mesh));
+    if(TH.pastel){pastelG.innerHTML=''; feats.forEach((f,j)=>{const d=path(f); if(d) el('path',{d,fill:PAL[(+f.id||j)%PAL.length]},pastelG);});}}
+  if(ST.globe) drawGlobe(i<0?null:(i>=N?N-1:i), lt);
   Object.values(revCache).forEach(g=>g.setAttribute('opacity',0));
   if(i>=0&&i<N){
     if(hlCache.idx!==i) buildHL(i);
-    hl.style.display=lt>=T_FLY-0.05?'':'none';
+    hl.style.display=lt>=T_FLY-0.05?'':'none'; labelsG.style.display=hl.style.display;
     const k=Math.min(1,Math.max(0,(lt-T_DRAW0)/(T_DRAW1-T_DRAW0)));
     hlCache.units.forEach(u=>{const q=k<=u.a?0:k>=u.b?1:(k-u.a)/(u.b-u.a);u.p.style.strokeDashoffset=u.L*(1-q);});
     hlCache.solid.setAttribute('opacity',.18*ease((lt-T_DRAW0)/.6));
@@ -142,10 +201,13 @@ window.render=function(t){
       timerG.setAttribute('transform',`translate(120 1120) scale(${sc}) translate(-120 -1120)`);}
     if(lt>=T_REV){const g=revealFor(i), r=ease((lt-T_REV)/.25); g.setAttribute('opacity',r*ease((PER-lt)/.2));
       const sc=.85+.15*r; g.setAttribute('transform',`translate(360 1095) scale(${sc}) translate(-360 -1095)`);}
+    Object.values(cLab).forEach(g=>g.setAttribute('opacity',0));
+    if(CAP){countryLabel(i).setAttribute('opacity',ease((lt-T_FLY+.1)/.3)*ease((PER-lt)/.2));
+      if(hlCache.star){const r=ease((lt-T_REV)/.3); hlCache.star.setAttribute('opacity',r); hlCache.star._c.setAttribute('r',34+20*(1-r));}}
     const lv=LIST[i].level; levelTxt.textContent='Daraja: '+lv; levelTxt.setAttribute('fill',LEVEL_COLOR[lv]||INK);
     counter.textContent=(i+1)+'/'+N; outro.setAttribute('opacity',0);
   } else {
-    hl.style.display=i>=N?'':'none'; timerG.setAttribute('opacity',0);
+    hl.style.display=i>=N?'':'none'; labelsG.style.display='none'; Object.values(cLab).forEach(g=>g.setAttribute('opacity',0)); timerG.setAttribute('opacity',0);
     outro.setAttribute('opacity',i>=N?ease(lt/.4):0); counter.textContent='';
     levelTxt.textContent=i<0?'Daraja: '+LIST[0].level:''; levelTxt.setAttribute('fill',LEVEL_COLOR[LIST[0].level]);
   }

@@ -1,11 +1,12 @@
 // index.html ni kadrma-kadr render qilib, FFmpeg orqali ovozsiz MP4 yasaydi.
-// Ishlatish: node render.js <chiqish.mp4> <events.json>
+// Ishlatish: node render.js <chiqish.mp4> <events.json> [index.html|player.html]
 const { chromium } = require('playwright');
 const { spawn } = require('child_process');
 const fs = require('fs'), path = require('path');
 
 const OUT = process.argv[2] || 'silent.mp4';
 const EVENTS = process.argv[3] || 'events.json';
+const PAGE = process.argv[4] || 'index.html';
 const FPS = +(process.env.FPS || 30);
 
 (async () => {
@@ -15,7 +16,7 @@ const FPS = +(process.env.FPS || 30);
   });
   const page = await browser.newPage({ viewport: { width: 720, height: 1280 } });
   page.on('pageerror', e => console.error('Sahifa xatosi:', e.message));
-  await page.goto('file://' + path.join(__dirname, 'index.html'));
+  await page.goto('file://' + path.join(__dirname, PAGE));
   await page.waitForFunction('window.READY === true', { timeout: 60000 });
 
   const D = await page.evaluate('DURATION');

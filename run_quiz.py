@@ -14,7 +14,7 @@ try:
 except ImportError:
     pass
 
-from generate import pick_questions, build_video, captions, mark_used
+from generate import pick_questions, build_video, captions, mark_used, mode_for_now, MODES
 from publishers import telegram
 
 PLATFORMS = ["youtube", "instagram", "telegram"]
@@ -26,21 +26,24 @@ def main():
     ap.add_argument("--only", default=",".join(PLATFORMS), help="youtube,instagram,telegram")
     ap.add_argument("--manual", action="store_true",
                     help="avto-joylamasdan, videoni va matnlarni TG_MANUAL_CHAT_IDS ga yuborish (qo'lda joylash uchun)")
+    ap.add_argument("--mode", choices=list(MODES), help="davlat | poytaxt | futbolchi (bo'sh bo'lsa — soatga qarab)")
     ap.add_argument("--keep", action="store_true", help="videoni joylagandan keyin o'chirmaslik")
     args = ap.parse_args()
 
-    items = pick_questions()
+    mode = args.mode or mode_for_now()
+    print("Format:", mode)
+    items = pick_questions(mode)
     print("Savollar:", ", ".join(f"{i['name']} ({i['level']})" for i in items))
-    video = build_video(items)
+    video = build_video(mode, items)
     print("Video:", video)
     if args.no_publish:
         return 0
 
-    cap = captions(items)
+    cap = captions(mode, items)
     if args.manual:
         chats = [c.strip() for c in os.environ["TG_MANUAL_CHAT_IDS"].split(",") if c.strip()]
         telegram.send_manual(str(video), cap, chats)
-        mark_used(items)
+        mark_used(mode, items)
         print("Botga yuborildi:", ", ".join(chats))
         if not args.keep:
             Path(video).unlink(missing_ok=True)
@@ -67,8 +70,8 @@ def main():
             results.append(f"❌ {p}: {type(e).__name__}: {e}")
 
     if ok:
-        mark_used(items)        # kamida bitta platformaga chiqqan bo'lsa — davlatlar "ishlatilgan"
-    report = "GeoIlm hisobot\n" + "\n".join(results)
+        mark_used(mode, items)        # kamida bitta platformaga chiqqan bo'lsa — davlatlar "ishlatilgan"
+    report = f"GeoIlm hisobot ({mode})\n" + "\n".join(results)
     print(report)
     telegram.notify(report)
     if not args.keep and ok == len(targets):

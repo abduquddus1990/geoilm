@@ -60,7 +60,7 @@ python run_quiz.py --no-publish
 
 7–10 daqiqadan keyin `out\geoilm_YYYYMMDD_HHMM.mp4` paydo bo'ladi. Uni ko'rib chiqing.
 
-Fon musiqasi uchun `quiz_generator\music\` papkasiga 3–6 ta **mualliflik huquqidan xoli** `.mp3` qo'ying (YouTube Audio Library, Pixabay Music). Har video tasodifiy birini oladi. Papka bo'sh bo'lsa, video faqat effekt tovushlari bilan chiqadi.
+**Fon musiqasi avtomatik:** har video uchun `music.py` yangi original trek yasaydi. Davlat va poytaxt formatlariga yengil, qiziquvchan ohang, futbolchi formatiga energik ohang tushadi. Bu treklar 100% o'zimizniki, shuning uchun Content ID xavfi yo'q. O'z treklaringni ishlatmoqchi bo'lsang, ularni `music/` yoki `music/<format>/` papkasiga qo'y, shunda generatsiya o'rniga ular olinadi.
 
 ## 4-qadam. Kalitlar (`.env`)
 
@@ -116,6 +116,28 @@ Har biri ishlasa, tayyor.
 
 ---
 
+## Formatlar va jadval
+
+| Toshkent vaqti | Format | Ma'lumot fayli |
+|---|---|---|
+| 09:00 | Bu qaysi davlat? (xarita, B dizayn) | `data/countries.json` |
+| 14:00 | Poytaxti qaysi? | `data/capitals.json` |
+| 20:00 | Bu qaysi futbolchi? (klublar yo'li) | `data/players.json` |
+
+Qo'lda tanlash: `python run_quiz.py --mode poytaxt --no-publish`
+
+`players.json` da 68 ta futbolchi bor (15 oson, 24 o‘rtacha, 29 qiyin; 80–90-yillar, 2000-yillar va hozirgi yulduzlar). Yangisini qo'shish: `{"id","name","nat","clubs":[[davlat_kodi,klub,yillar],...]}`, Angliya uchun `ENG`. Klublar yo'li 2–10 ta bo'lsin.
+
+## O'z ovozing
+
+`quiz_generator/voice/` papkasiga fayllarni joylasang, ovoz har savol boshida avtomatik qo'yiladi:
+
+- `davlat.mp3` — "Bu qaysi davlat?"
+- `poytaxt.mp3` — "Poytaxti qaysi?"
+- `futbolchi.mp3` — "Bu qaysi futbolchi?"
+
+Format mp3, m4a, ogg yoki wav bo'lishi mumkin, 1–2 soniya, oldi va orqasida jimlik bo'lmasin.
+
 ## Sozlash
 
 | Nima | Qayerda |
@@ -126,6 +148,7 @@ Har biri ishlasa, tayyor.
 | Yangi davlat qo'shish | `data/countries.json` → `["ISO raqam kodi", "ISO 2 harf", "O'zbekcha nom"]` |
 | Matnlar, heshteglar | `generate.py` → `captions()` |
 | Musiqa ovozi | `generate.py` → `volume=0.16` |
+| Ko'rinish (dizayn) | `generate.py` → `STYLE`: theme = `notebook` / `clean` / `pastel` / `chalk`, `globe`, `labels`, `zoom` (yoki GEOILM_THEME va boshqa env o'zgaruvchilar) |
 
 ## Muammolar
 
