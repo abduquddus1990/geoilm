@@ -22,13 +22,15 @@ MODES = {
     "futbolchi": {"title": "Bu qaysi futbolchi?", "page": "player.html", "plan": {"oson": 2, "o‘rtacha": 2, "qiyin": 2}},
     "viloyat":   {"title": "Bu qaysi viloyat?",   "page": "index.html",  "plan": {"oson": 3, "o‘rtacha": 4, "qiyin": 3}},
     "globus":    {"title": "Bu qaysi davlat?",    "page": "globe.html",  "plan": {"oson": 3, "o‘rtacha": 4, "qiyin": 3}},
+    "futbolchi_globus": {"title": "Bu qaysi futbolchi?", "page": "path.html", "plan": {"oson": 2, "o‘rtacha": 2, "qiyin": 2}},
+    "hikoya":    {"title": "", "page": "story.html", "plan": {}},
     "globus_poytaxt": {"title": "Poytaxti qaysi?", "page": "globe.html", "plan": {"oson": 3, "o‘rtacha": 4, "qiyin": 3}},
     "tuman":     {"title": "Bu qaysi tuman?",     "page": "index.html",  "plan": {"qiyin": 8}},
 }
 # Avtomatik jadval: kuniga 3 ta slot, TOSHKENT vaqti bilan (06:20, 19:00, 21:00). Formatlar navbat bilan
 # almashadi, shuning uchun har kuni boshqacha kombinatsiya chiqadi.
 SLOT_HOURS_TASHKENT = [6, 19, 21]
-ROTATION = ["globus", "futbolchi", "globus_poytaxt", "davlat", "tuman", "viloyat", "poytaxt"]
+ROTATION = ["globus", "futbolchi", "globus_poytaxt", "davlat", "tuman", "viloyat", "poytaxt"]  # hikoya — alohida jadval (2 kunda 1)
 
 STYLE = {  # xarita ko'rinishi: theme = notebook | clean | pastel | chalk
     "theme": os.getenv("GEOILM_THEME", "clean"),
@@ -47,6 +49,23 @@ def mode_for_now(slot: int | None = None) -> str:
     n, base = len(rot), now.date().toordinal() * len(SLOT_HOURS_TASHKENT)
     shift = base // n if n % 3 == 0 else 0   # n 3 ga bo'linsa kombinatsiyalar 2 kunda takrorlanardi
     return rot[(base + shift + slot) % n]
+
+
+def _players_with_coords() -> dict:
+    """Klublariga koordinata bog'langan futbolchilar (kamida 3 ta klub). Manba: Wikidata yoki data/clubs.json."""
+    known = {k: v for k, v in _load("clubs.json").items() if not k.startswith("_")}
+    out = {}
+    for lvl, lst in _players().items():
+        for p in lst:
+            clubs = []
+            for c in p["clubs"]:
+                if len(c) >= 5 and c[3] is not None:
+                    clubs.append(c[:5])
+                elif c[1] in known:
+                    clubs.append([c[0], c[1], c[2], known[c[1]][1], known[c[1]][2]])
+            if len(clubs) >= 3:
+                out.setdefault(lvl, []).append({**p, "clubs": clubs})
+    return out
 
 
 def _players() -> dict:
@@ -97,6 +116,13 @@ def pick_district_region(seed=None, region=None) -> str:
 
 def pick_questions(mode="davlat", seed=None, region=None) -> list[dict]:
     rnd, used, today = random.Random(seed), _used(), dt.date.today()
+    if mode == "hikoya":
+        done = {k.split(":", 1)[1] for k in used if k.startswith("hikoya:")}
+        for f in sorted((DATA / "stories").glob("*.json")):
+            st = json.loads(f.read_text(encoding="utf-8"))
+            if st["id"] not in done:
+                return [{"id": st["id"], "story": st, "level": "-", "name": st["title"]}]
+        raise SystemExit("HIKOYALAR_TUGADI: data/stories/ dagi barcha hikoyalar chiqarilgan — yangi ssenariy qo'shing.")
     if mode == "tuman":
         if not DISTRICTS.exists():
             raise SystemExit("Tumanlar ma'lumoti yo'q. Avval:  python tools/fetch_districts.py")
@@ -113,6 +139,8 @@ def pick_questions(mode="davlat", seed=None, region=None) -> list[dict]:
     elif mode == "viloyat":
         db = {k: [{"id": c[0], "a2": "UZ", "name": c[1]} for c in v]
               for k, v in _load("regions.json").items() if not k.startswith("_")}
+    elif mode == "futbolchi_globus":
+        db = _players_with_coords()
     else:
         db = _players()
     items = []
@@ -129,6 +157,10 @@ def pick_questions(mode="davlat", seed=None, region=None) -> list[dict]:
 
 def mark_used(mode: str, items: list[dict]) -> None:
     used = _used()
+    if mode == "hikoya":
+        used[f"hikoya:{items[0]['id']}"] = dt.date.today().isoformat()
+        USED.write_text(json.dumps(used, ensure_ascii=False, indent=1), encoding="utf-8")
+        return
     if mode == "tuman" and items:
         used[f"tuman_region:{items[0]['region']}"] = dt.date.today().isoformat()
     for it in items:
@@ -145,7 +177,32 @@ def _names() -> dict:
     return {c[0]: c[2] for lvl in _load("countries.json").values() for c in lvl}
 
 
+def build_story_video(st: dict) -> Path:
+    OUT.mkdir(exist_ok=True)
+    stamp = dt.datetime.now().strftime("%Y%m%d_%H%M")
+    (GEN / "quiz.js").write_text("window.QUIZ=" + json.dumps({"story": st}, ensure_ascii=False) + ";", encoding="utf-8")
+    silent, events, sfx = OUT / "silent.mp4", OUT / "events.json", OUT / "sfx.wav"
+    _run(["node", GEN / "render.js", silent, events, "story.html"])
+    sys.path.insert(0, str(GEN))
+    from sfx import build_story
+    from music import generate as gen_music
+    duration = build_story(str(events), str(sfx))
+    track = OUT / "music.wav"
+    gen_music("geo", duration + 1, str(track), random.randrange(10**6))
+    final = OUT / f"geoilm_hikoya_{st['id']}_{stamp}.mp4"
+    filt = (f"[2:a]volume=0.32,afade=t=in:d=1,afade=t=out:st={max(0, duration - 2):.2f}:d=2[m];"
+            f"[1:a][m]amix=inputs=2:duration=first:normalize=0[a]")
+    _run(["ffmpeg", "-y", "-loglevel", "error", "-i", silent, "-i", sfx, "-i", track, "-filter_complex", filt,
+          "-map", "0:v", "-map", "[a]", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-t", f"{duration:.2f}",
+          "-movflags", "+faststart", final])
+    for p in (silent, sfx, track):
+        Path(p).unlink(missing_ok=True)
+    return final
+
+
 def build_video(mode: str, items: list[dict], handle="@geoilm") -> Path:
+    if mode == "hikoya":
+        return build_story_video(items[0]["story"])
     OUT.mkdir(exist_ok=True)
     cfg = MODES[mode]
     stamp = dt.datetime.now().strftime("%Y%m%d_%H%M")
@@ -182,7 +239,7 @@ def build_video(mode: str, items: list[dict], handle="@geoilm") -> Path:
     voice_wav = to_wav(title_src, "title") if title_src else None
     answers = []
     for i, it in enumerate(items):
-        vmode = {"globus": "davlat", "globus_poytaxt": "poytaxt"}.get(mode, mode)
+        vmode = {"globus": "davlat", "globus_poytaxt": "poytaxt", "futbolchi_globus": "futbolchi"}.get(mode, mode)
         f = lines / f"ans_{vmode}_{it['id']}.wav"
         answers.append(to_wav(f, f"ans{i}") if f.exists() else None)
     outro_wav = to_wav(lines / "outro.wav", "outro") if (lines / "outro.wav").exists() else None
@@ -221,9 +278,13 @@ def build_video(mode: str, items: list[dict], handle="@geoilm") -> Path:
 
 
 def captions(mode: str, items: list[dict]) -> dict:
+    if mode == "hikoya":
+        st = items[0]["story"]
+        text = f"{st['caption']}\n\nObuna bo‘ling: @geoilm\n\n{st.get('tags', '')}"
+        return {"instagram": text, "telegram": text, "yt_title": f"{st['title']} #shorts"[:100], "yt_desc": text + " #shorts"}
     n = len(items)
     base = "#geoilm #viktorina #quiz #bilim #oʻzbekiston"
-    if mode == "futbolchi":
+    if mode in ("futbolchi", "futbolchi_globus"):
         head, tags, what = "⚽ Bu qaysi futbolchi? Klublaridan toping!", "#futbol #football #futbolchi " + base, "futbolchi"
         answers = "\n".join(f"{i+1}. {it['name']}" for i, it in enumerate(items))
     elif mode == "tuman":
@@ -242,7 +303,8 @@ def captions(mode: str, items: list[dict]) -> dict:
     insta = f"{head} {n} ta savol — osondan qiyinga!\nNechtasini topdingiz? Izohda yozing 👇\n\nHar kuni yangi viktorina — obuna bo‘ling: @geoilm\n\n{tags}"
     title = {"davlat": "Bu qaysi davlat? 🌍", "poytaxt": "Poytaxti qaysi? 🏛", "futbolchi": "Bu qaysi futbolchi? ⚽",
              "viloyat": "Bu qaysi viloyat? 🇺🇿", "tuman": "Bu qaysi tuman? 🇺🇿", "globus": "Globusdan toping: bu qaysi davlat? 🌍",
-             "globus_poytaxt": "Poytaxti qaysi? 🌍🏛"}[mode]
+             "globus_poytaxt": "Poytaxti qaysi? 🌍🏛",
+             "futbolchi_globus": "Transfer yo‘lidan toping: bu qaysi futbolchi? ⚽🌍"}[mode]
     credit = {"viloyat": "\n\nXarita: geoBoundaries, © OpenStreetMap hissadorlari (ODbL)",
               "tuman": "\n\nXarita: © OpenStreetMap hissadorlari (ODbL)"}.get(mode, "")
     flag = OUT / "tts_used.flag"

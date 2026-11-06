@@ -44,6 +44,12 @@
       "problemMatcher": []
     },
     {
+      "label": "GeoIlm: 6) Hikoya videosi (navbatdagi) — botga",
+      "type": "shell",
+      "command": "python run_quiz.py --mode hikoya --only telegram",
+      "problemMatcher": []
+    },
+    {
       "label": "GeoIlm: 5) Faqat video yasash (yubormasdan)",
       "type": "shell",
       "command": "python run_quiz.py --mode ${input:mode} --no-publish --keep",
@@ -55,7 +61,7 @@
       "id": "mode",
       "type": "pickString",
       "description": "Qaysi format?",
-      "options": ["globus", "globus_poytaxt", "davlat", "poytaxt", "futbolchi", "viloyat", "tuman"],
+      "options": ["hikoya", "globus", "globus_poytaxt", "davlat", "poytaxt", "futbolchi", "viloyat", "tuman"],
       "default": "globus"
     },
     {

@@ -1,0 +1,109 @@
+<!doctype html>
+<!-- GeoIlm: "Xarita hikoyasi" — ssenariy (window.QUIZ.story) asosidagi tushuntiruvchi video.
+     Davlatlar HAQIQIY o'lchamda ko'chiriladi (sfera ustida aylantirish, keyin Merkator proyeksiya). -->
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:M;font-weight:800;src:url(node_modules/@fontsource/montserrat/files/montserrat-latin-ext-800-normal.woff2) format('woff2');unicode-range:U+0100-024F,U+2018-201F;}
+@font-face{font-family:M;font-weight:800;src:url(node_modules/@fontsource/montserrat/files/montserrat-latin-800-normal.woff2) format('woff2');}
+@font-face{font-family:M;font-weight:700;src:url(node_modules/@fontsource/montserrat/files/montserrat-latin-ext-700-normal.woff2) format('woff2');unicode-range:U+0100-024F,U+2018-201F;}
+@font-face{font-family:M;font-weight:700;src:url(node_modules/@fontsource/montserrat/files/montserrat-latin-700-normal.woff2) format('woff2');}
+html,body{margin:0;background:#081226;overflow:hidden} svg{display:block}
+</style></head><body>
+<svg id="s" width="720" height="1280" viewBox="0 0 720 1280" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <radialGradient id="bg" cx="50%" cy="45%" r="85%"><stop offset="0%" stop-color="#12234a"/><stop offset="100%" stop-color="#060d1e"/></radialGradient>
+  <filter id="glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <linearGradient id="topfade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#060d1e" stop-opacity=".95"/><stop offset="1" stop-color="#060d1e" stop-opacity="0"/></linearGradient>
+</defs>
+<rect width="720" height="1280" fill="url(#bg)"/>
+<g id="map"><path id="land" fill="#1d3058" stroke="#2f4778" stroke-width=".8"/><path id="eq" fill="none" stroke="#7fa6e8" stroke-width="1.5" stroke-dasharray="8 6" opacity="0"/></g>
+<g id="items"></g>
+<rect width="720" height="330" fill="url(#topfade)"/>
+<g id="ui"></g>
+</svg>
+<script src="node_modules/d3/dist/d3.min.js"></script>
+<script src="node_modules/topojson-client/dist/topojson-client.min.js"></script>
+<script src="node_modules/world-atlas/world.js"></script>
+<script src="quiz.js"></script>
+<script>
+const ST=window.QUIZ.story, NS='http://www.w3.org/2000/svg';
+function el(t,a,p){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);p.appendChild(e);return e;}
+const ui=document.getElementById('ui'), itemsG=document.getElementById('items');
+const ease=x=>x<0?0:x>1?1:x*x*(3-2*x), eio=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+const feats=topojson.feature(WORLD,WORLD.objects.countries).features;
+const byId={}; feats.forEach(f=>{const o=byId[f.id]; if(!o||d3.geoArea(f)>d3.geoArea(o)) byId[f.id]=f;});
+function mainGeom(f){const g=f.geometry; if(g.type!=='MultiPolygon') return f;
+  const ps=g.coordinates.map(c=>({type:'Polygon',coordinates:c})).map(p=>({p,a:d3.geoArea(p),c:d3.geoCentroid(p)}));
+  const big=ps.reduce((a,b)=>b.a>a.a?b:a);
+  const keep=ps.filter(q=>d3.geoDistance(q.c,big.c)*6371<1500);
+  return {type:'Feature',geometry:{type:'MultiPolygon',coordinates:keep.map(q=>q.p.coordinates)}};}
+const land={type:'FeatureCollection',features:feats};
+const proj=d3.geoMercator().translate([360,700]), path=d3.geoPath(proj);
+// haqiqiy o'lchamda ko'chirish: A nuqtani B nuqtaga sfera bo'ylab aylantirish
+function moved(geom,A,B){const rA=d3.geoRotation([-A[0],-A[1]]), rB=d3.geoRotation([-B[0],-B[1]]);
+  const tf=c=>rB.invert(rA(c)); const map=cs=>typeof cs[0]==='number'?tf(cs):cs.map(map);
+  return {type:'Feature',geometry:{type:geom.geometry.type,coordinates:map(geom.geometry.coordinates)}};}
+// vaqt jadvali
+let T=0; const SC=ST.scenes.map(s=>{const o={...s,start:T}; T+=s.dur; return o;});
+window.DURATION=T;
+window.EVENTS=SC.map(s=>({start:s.start,pills:(s.pills||[]).map(p=>s.start+(p.at||1))}));
+// har bir ko'chiriladigan davlatning sahnalar orasidagi joyi
+const geomCache={}; const G=id=>geomCache[id]||(geomCache[id]=mainGeom(byId[id]));
+const lastPos={};
+SC.forEach(s=>(s.items||[]).forEach(it=>{const home=d3.geoCentroid(G(it.id));
+  it._from=it.move?(it.move.from||lastPos[it.id]||home):(lastPos[it.id]||home);
+  it._to=it.move?it.move.to:it._from; it._home=home; lastPos[it.id]=it._to;}));
+Promise.all([document.fonts.load('800 40px M','Aʻ‘'),document.fonts.load('700 24px M','Aʻ‘')]).then(()=>{ buildUI(); _foot(); render(0); window.READY=true; });
+function buildUI(){
+// UI elementlari (har sahna uchun alohida guruh)
+function fit(t,max=650){const L=t.getComputedTextLength(); if(L>max) t.setAttribute('font-size',parseFloat(t.getAttribute('font-size'))*max/L); return t;}
+function wrapText(p,x,y,str,size,color,w=800){const t=el('text',{x,y,'font-family':'M','font-weight':w,'font-size':size,fill:color,'text-anchor':'middle'},p);t.textContent=str;return fit(t);}
+SC.forEach((s,i)=>{const g=el('g',{opacity:0},ui); s._g=g;
+  if(s.t1) wrapText(g,360,s.t2?118:140,s.t1,s.big?58:44,'#ffffff');
+  if(s.t2) wrapText(g,360,s.t1?172:140,s.t2,s.big?54:38,s.c2||'#ffd84d');
+  if(s.t3) wrapText(g,360,s.t1?214:180,s.t3,24,'#b8c7e6',700);
+  s._pills=(s.pills||[]).map((p,k)=>{const pg=el('g',{opacity:0},ui); const fs=p.size||28, w=p.t.length*fs*.6+80, y=(p.y||1010)+k*72;
+    el('rect',{x:360-w/2,y:y-36,width:w,height:58,rx:29,fill:'#0b1a3a','fill-opacity':.92,stroke:p.c||'#fff','stroke-width':2.5},pg);
+    el('circle',{cx:360-w/2+30,cy:y-7,r:8,fill:p.c||'#fff'},pg);
+    const t=el('text',{x:360+12,y:y+3,'font-family':'M','font-weight':800,'font-size':fs,fill:'#fff','text-anchor':'middle'},pg); t.textContent=p.t; fit(t,560);
+    return {pg,at:s.start+(p.at||1)};});
+  if(s.note){const n=el('text',{x:360,y:1150,'font-family':'M','font-weight':700,'font-size':22,fill:'#8fa6cf','text-anchor':'middle',opacity:0},ui); n.textContent=s.note; fit(n,640); s._note=n;}
+  if(s.cta){const cg=el('g',{opacity:0},ui); el('rect',{x:190,y:1000,width:340,height:80,rx:40,fill:'#ff3d7f'},cg);
+    wrapText(cg,360,1036,s.cta,30,'#fff'); wrapText(cg,360,1066,s.cta2||'',18,'#ffe1ec',700); s._cta=cg;}
+});
+}
+let foot;
+function _foot(){foot=el('text',{x:360,y:1240,'font-family':'M','font-weight':700,'font-size':20,fill:'#5d76a6','text-anchor':'middle'},ui); foot.textContent=ST.footer||'@geoilm · haqiqiy o‘lchamda';}
+// ko'rinish (kamera)
+function viewAt(i,lt){const v=SC[i].view, pv=i>0?SC[i-1].view:v, k=eio(Math.min(1,lt/.9));
+  let dl=v.c[0]-pv.c[0]; if(dl>180)dl-=360; if(dl<-180)dl+=360;
+  return {c:[pv.c[0]+dl*k,pv.c[1]+(v.c[1]-pv.c[1])*k],s:Math.exp(Math.log(pv.s)+(Math.log(v.s)-Math.log(pv.s))*k)};}
+let lastKey='';
+window.render=function(t){
+  let i=SC.findIndex(s=>t>=s.start&&t<s.start+s.dur); if(i<0) i=SC.length-1;
+  const s=SC[i], lt=t-s.start, v=viewAt(i,lt);
+  proj.center(v.c).scale(v.s);
+  const key=v.s.toFixed(2)+v.c.join(); if(key!==lastKey){lastKey=key; document.getElementById('land').setAttribute('d',path(land));
+    document.getElementById('eq').setAttribute('d',path({type:'LineString',coordinates:[[-180,0],[-60,0],[60,0],[180,0]]}));}
+  document.getElementById('eq').setAttribute('opacity',s.equator?.8:0);
+  // davlatlar
+  itemsG.innerHTML='';
+  (s.items||[]).forEach(it=>{const a=ease((lt-(it.appear||0))/.5); if(a<=0) return;
+    const mk=it.move?eio(Math.min(1,Math.max(0,(lt-(it.move.at||.8))/(it.move.dur||2.2)))):1;
+    const pos=d3.geoInterpolate(it._from,it._to)(mk);
+    const geo=(d3.geoDistance(pos,it._home)<1e-4)?G(it.id):moved(G(it.id),it._home,pos);
+    const d=path(geo); if(!d) return;
+    el('path',{d,fill:it.outline?'none':it.color,'fill-opacity':it.outline?0:(it.op||.88)*a,stroke:it.outline?it.color:'#ffffff',
+      'stroke-width':it.outline?3:1.2,'stroke-dasharray':it.outline?'7 5':'none','stroke-opacity':a,filter:it.glow?'url(#glow)':'none'},itemsG);
+    if(it.label){const c=path.centroid(geo); const tx=el('text',{x:c[0]+(it.dx||0),y:c[1]+(it.dy||0),'font-family':'M','font-weight':800,'font-size':it.ls||22,fill:'#fff','text-anchor':'middle',opacity:a,stroke:'#081226','stroke-width':4,'paint-order':'stroke'},itemsG); tx.textContent=it.label;}
+  });
+  // matnlar
+  SC.forEach((x,k)=>{x._g.setAttribute('opacity',k===i?ease(lt/.4)*ease((x.dur-lt)/.3):0);
+    x._pills.forEach(p=>{const r=k===i?ease((t-p.at)/.35)*ease((x.start+x.dur-t)/.3):0; p.pg.setAttribute('opacity',r);
+      p.pg.setAttribute('transform',`translate(0 ${(1-r)*14})`);});
+    if(x._note) x._note.setAttribute('opacity',k===i?ease((lt-1)/.5)*ease((x.dur-lt)/.3):0);
+    if(x._cta){const r=k===i?ease((lt-1)/.4):0; x._cta.setAttribute('opacity',r); x._cta.setAttribute('transform',`translate(360 1040) scale(${.9+.1*r+.03*Math.sin(t*6)*r}) translate(-360 -1040)`);}
+  });
+};
+
+</script></body></html>

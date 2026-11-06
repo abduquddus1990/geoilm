@@ -128,6 +128,28 @@ Qo'lda tanlash: `python run_quiz.py --mode poytaxt --no-publish`
 
 `players.json` da 68 ta futbolchi bor (15 oson, 24 o‘rtacha, 29 qiyin; 80–90-yillar, 2000-yillar va hozirgi yulduzlar). Yangisini qo'shish: `{"id","name","nat","clubs":[[davlat_kodi,klub,yillar],...]}`, Angliya uchun `ENG`. Klublar yo'li 2–10 ta bo'lsin.
 
+## Xarita hikoyalari ("hikoya", 2 kunda 1 marta)
+
+Bu tushuntiruvchi videolar: davlatlar haqiqiy o'lchamda bir-birining ustiga ko'chiriladi, yorliqlar va faktlar chiqadi. Har bir video `data/stories/` papkasidagi bitta ssenariy faylidan (JSON) yasaladi va fayl nomi tartibida navbatma-navbat chiqadi.
+
+- Qo'lda yasash: Run Task → **6) Hikoya videosi**, yoki `python run_quiz.py --mode hikoya --only telegram`
+- Avtomat: `.github/workflows/geoilm_story.yml` har 2 kunda 17:37 da ishlaydi.
+- Navbat tugasa, Telegram'dagi admin chatiga "HIKOYALAR_TUGADI" xabari keladi.
+
+Sahna maydonlari: `t1`, `t2` (rangli qator, rangi `c2`), `view` (`c` — markaz [uzunlik, kenglik], `s` — masshtab), `items` (`id` — davlat kodi, `color`, `move.to` — davlatni haqiqiy o'lchamda shu nuqtaga ko'chirish, `outline` — faqat kontur), `pills` (yorliqlar), `note`, `cta`.
+
+## Transfer yo'li formati ("futbolchi_globus")
+
+Globus futbolchining klublari joylashgan shaharlar bo'ylab uchadi. Shaharlar orasida yorqin yoylar chiziladi, raqamlangan nuqtalar paydo bo'ladi, pastdagi kartochkada esa bayroq, klub nomi va yillar ko'rsatiladi.
+
+- Klub koordinatalari Wikidata'dan (stadion joylashuvi) yoki `data/clubs.json` dan olinadi.
+- `fetch_players.py` endi koordinatalarni ham oladi. Eski `players_auto.json` uchun uni qayta ishga tushirish kerak.
+- Faqat kamida 3 ta klubi koordinatali futbolchilar tanlanadi.
+
+```powershell
+python run_quiz.py --mode futbolchi_globus --only telegram
+```
+
 ## 3D globus formati ("globus")
 
 Kosmos fonida aylanuvchi globus har savolda keyingi davlatga uchib boradi va yaqinlashadi. Davlat yorqin rang bilan yonib, atrofida to'lqin tarqaladi. Davlatlar `data/countries.json` dan olinadi, kunlik navbatda birinchi turadi.

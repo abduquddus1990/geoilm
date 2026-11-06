@@ -34,7 +34,11 @@ def main():
 
     mode = args.mode or mode_for_now()
     print("Format:", mode)
-    items = pick_questions(mode, region=args.region) if mode == "tuman" else pick_questions(mode)
+    try:
+        items = pick_questions(mode, region=args.region) if mode == "tuman" else pick_questions(mode)
+    except SystemExit as e:   # masalan HIKOYALAR_TUGADI — adminga xabar
+        telegram.notify(f"GeoIlm: {e}")
+        raise
     print("Savollar:", ", ".join(f"{i['name']} ({i['level']})" for i in items))
     video = build_video(mode, items)
     print("Video:", video)

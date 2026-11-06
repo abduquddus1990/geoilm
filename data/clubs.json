@@ -1,0 +1,14 @@
+{
+ "_izoh": "Klub → [shahar, kenglik, uzunlik] (stadion joylashuvi, taxminan). Wikidata'dan olinmagan klublar uchun qo'lda.",
+ "Barcelona": ["Barselona", 41.381, 2.123], "Paris Saint-Germain": ["Parij", 48.841, 2.253], "Inter Miami": ["Mayami", 26.193, -80.161],
+ "Sporting": ["Lissabon", 38.761, -9.161], "Manchester United": ["Manchester", 53.463, -2.291], "Real Madrid": ["Madrid", 40.453, -3.688],
+ "Juventus": ["Turin", 45.110, 7.641], "Al-Nassr": ["Ar-Riyod", 24.667, 46.692], "Santos": ["Santus", -23.951, -46.339],
+ "Al-Hilal": ["Ar-Riyod", 24.789, 46.839], "Monaco": ["Monako", 43.728, 7.416], "Molde": ["Molde", 62.734, 7.159],
+ "RB Salzburg": ["Zalsburg", 47.816, 13.008], "Borussia Dortmund": ["Dortmund", 51.493, 7.452], "Manchester City": ["Manchester", 53.483, -2.200],
+ "Lech Poznań": ["Poznan", 52.398, 16.859], "Bayern München": ["Myunxen", 48.219, 11.625], "Dinamo Zagreb": ["Zagreb", 45.819, 16.018],
+ "Tottenham": ["London", 51.604, -0.066], "Milan": ["Milan", 45.478, 9.124], "Malmö": ["Malmyo", 55.584, 12.988],
+ "Ajax": ["Amsterdam", 52.314, 4.942], "Inter": ["Milan", 45.478, 9.124], "LA Galaxy": ["Los-Anjeles", 33.864, -118.261],
+ "Lyon": ["Lion", 45.765, 4.982], "Al-Ittihad": ["Jidda", 21.762, 39.165], "Bunyodkor": ["Toshkent", 41.350, 69.200],
+ "Rostov": ["Rostov-na-Donu", 47.209, 39.738], "Genoa": ["Genuya", 44.416, 8.952], "Roma": ["Rim", 41.934, 12.455],
+ "Başakşehir": ["Istanbul", 41.081, 28.811]
+}

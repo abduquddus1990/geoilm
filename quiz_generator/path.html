@@ -1,0 +1,136 @@
+<!doctype html>
+<!-- GeoIlm: "Transfer yo'li" — globusda futbolchining klublari bo'ylab uchish. Ma'lumot quiz.js (window.QUIZ) dan.
+     items[i].clubs = [[flag, club, years, lat, lon], ...] -->
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:M;font-weight:800;src:url(node_modules/@fontsource/montserrat/files/montserrat-latin-ext-800-normal.woff2) format('woff2');unicode-range:U+0100-024F,U+2018-201F;}
+@font-face{font-family:M;font-weight:800;src:url(node_modules/@fontsource/montserrat/files/montserrat-latin-800-normal.woff2) format('woff2');}
+@font-face{font-family:M;font-weight:700;src:url(node_modules/@fontsource/montserrat/files/montserrat-latin-ext-700-normal.woff2) format('woff2');unicode-range:U+0100-024F,U+2018-201F;}
+@font-face{font-family:M;font-weight:700;src:url(node_modules/@fontsource/montserrat/files/montserrat-latin-700-normal.woff2) format('woff2');}
+html,body{margin:0;background:#050b1a;overflow:hidden} svg{display:block}
+</style></head><body>
+<svg id="s" width="720" height="1280" viewBox="0 0 720 1280" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <radialGradient id="space" cx="50%" cy="45%" r="80%"><stop offset="0%" stop-color="#0f3a2a"/><stop offset="60%" stop-color="#07182a"/><stop offset="100%" stop-color="#03070f"/></radialGradient>
+  <radialGradient id="ocean" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#3f8fd8"/><stop offset="55%" stop-color="#1c5aa6"/><stop offset="100%" stop-color="#0b2d63"/></radialGradient>
+  <radialGradient id="shade" cx="35%" cy="30%" r="75%"><stop offset="45%" stop-color="#000" stop-opacity="0"/><stop offset="100%" stop-color="#000814" stop-opacity=".55"/></radialGradient>
+  <radialGradient id="atmo" cx="50%" cy="50%" r="50%"><stop offset="86%" stop-color="#7dffb5" stop-opacity="0"/><stop offset="90%" stop-color="#7dffb5" stop-opacity=".28"/><stop offset="100%" stop-color="#7dffb5" stop-opacity="0"/></radialGradient>
+  <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <clipPath id="clipG"><circle id="clipC" cx="360" cy="600" r="300"/></clipPath>
+</defs>
+<rect width="720" height="1280" fill="url(#space)"/>
+<g id="stars"></g>
+<circle id="atmoC" cx="360" cy="600" r="345" fill="url(#atmo)"/>
+<circle id="oceanC" cx="360" cy="600" r="300" fill="url(#ocean)"/>
+<g clip-path="url(#clipG)">
+  <path id="grat" fill="none" stroke="#9fd0ff" stroke-opacity=".16" stroke-width="1"/>
+  <path id="land" fill="#e6dfc4"/>
+  <path id="borders" fill="none" stroke="#ffffff" stroke-opacity=".5" stroke-width=".8"/>
+  <g id="arcs"></g><g id="marks"></g>
+</g>
+<circle id="shadeC" cx="360" cy="600" r="300" fill="url(#shade)" pointer-events="none"/>
+<g id="ui"></g>
+</svg>
+<script src="node_modules/d3/dist/d3.min.js"></script>
+<script src="node_modules/topojson-client/dist/topojson-client.min.js"></script>
+<script src="node_modules/world-atlas/world.js"></script>
+<script src="quiz.js"></script>
+<script>
+const Q=window.QUIZ, LIST=Q.items, NS='http://www.w3.org/2000/svg';
+const LEVEL_COLOR={'oson':'#46d39a','o‘rtacha':'#ffc94d','qiyin':'#ff6b6b'};
+const CX=360, CY=600, INTRO=1.2, OUTRO=2.8, T_FLY=1.3, HOP=1.0, CD=3, REVT=1.7;
+function el(t,a,p){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);p.appendChild(e);return e;}
+const ui=document.getElementById('ui');
+function text(x,y,s,size,o={},p=ui){const t=el('text',{x,y,'font-family':'M','font-weight':o.w||800,'font-size':size,fill:o.color||'#fff','text-anchor':o.anchor||'middle'},p);t.textContent=s;return t;}
+const ease=x=>x<0?0:x>1?1:x*x*(3-2*x), eio=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+const FLAG={ENG:'gb-eng',SCT:'gb-sct',WLS:'gb-wls'};
+const flagHref=a2=>`node_modules/flag-icons/flags/4x3/${FLAG[a2]||a2.toLowerCase()}.svg`;
+(()=>{const g=document.getElementById('stars');let s=11;const r=()=>(s=(s*16807)%2147483647)/2147483647;
+ for(let i=0;i<200;i++) el('circle',{cx:r()*720,cy:r()*1280,r:r()*1.3+.3,fill:'#fff',opacity:.2+r()*.6},g);})();
+const land=topojson.feature(WORLD,WORLD.objects.countries), mesh=topojson.mesh(WORLD,WORLD.objects.countries,(a,b)=>a!==b);
+const proj=d3.geoOrthographic().translate([CX,CY]).clipAngle(90).precision(.5), path=d3.geoPath(proj), grat=d3.geoGraticule10();
+const ids=['clipC','oceanC','shadeC'].map(i=>document.getElementById(i)), atmo=document.getElementById('atmoC');
+const landP=document.getElementById('land'), bordP=document.getElementById('borders'), gratP=document.getElementById('grat');
+const arcsG=document.getElementById('arcs'), marksG=document.getElementById('marks');
+// vaqt jadvali va kamera
+let T=INTRO;
+const TL=LIST.map(it=>{const pts=it.clubs.map(c=>[c[4],c[3]]); const center=d3.geoCentroid({type:'MultiPoint',coordinates:pts});
+  const ang=Math.max(...pts.map(p=>d3.geoDistance(p,center)));
+  const R=Math.max(300,Math.min(900,150/Math.sin(Math.min(ang+.06,1.3))));
+  const s=T, hop0=s+T_FLY, cd=hop0+it.clubs.length*HOP+.3, rev=cd+CD, end=rev+REVT; T=end;
+  return {pts,center,R,s,hop0,cd,rev,end};});
+window.DURATION=T+OUTRO;
+window.EVENTS=LIST.map((it,i)=>({start:TL[i].s,cd:TL[i].cd,rev:TL[i].rev,level:it.level,levelChange:i>0&&LIST[i-1].level!==it.level}));
+// UI
+const hdr=el('g',{},ui);
+el('rect',{x:70,y:60,width:580,height:150,rx:28,fill:'#0b1a3a','fill-opacity':.75,stroke:'#7dffb5','stroke-opacity':.45,'stroke-width':2},hdr);
+text(360,132,Q.title||'Bu qaysi futbolchi?',50,{},hdr);
+const sub=text(360,180,'',26,{w:700},hdr);
+const counter=text(650,1240,'',28,{w:700,color:'#9fe8c4',anchor:'end'});
+text(70,1240,Q.handle||'@geoilm',28,{w:700,color:'#9fe8c4',anchor:'start'});
+// joriy klub kartochkasi
+const card=el('g',{opacity:0},ui);
+el('rect',{x:70,y:950,width:580,height:110,rx:24,fill:'#0b1a3a','fill-opacity':.85,stroke:'#ffffff','stroke-opacity':.25,'stroke-width':2},card);
+const cardFlag=el('image',{x:96,y:983,width:58,height:44,preserveAspectRatio:'none'},card);
+const cardNum=text(632,1020,'',30,{w:700,color:'#7dffb5',anchor:'end'},card);
+const cardClub=text(172,1002,'',36,{anchor:'start'},card);
+const cardYrs=text(172,1040,'',26,{w:700,color:'#b8c7e6',anchor:'start'},card);
+// taymer
+const tg=el('g',{opacity:0},ui), TX=360, TY=1120, TR=50;
+el('circle',{cx:TX,cy:TY,r:TR,fill:'#0b1a3a','fill-opacity':.85,stroke:'#fff','stroke-opacity':.2,'stroke-width':8},tg);
+const tarc=el('circle',{cx:TX,cy:TY,r:TR,fill:'none','stroke-width':8,'stroke-linecap':'round',transform:`rotate(-90 ${TX} ${TY})`},tg);
+const tnum=text(TX,TY+21,'3',58,{},tg), ARC=2*Math.PI*TR; tarc.setAttribute('stroke-dasharray',ARC);
+// javob
+const revs=LIST.map(it=>{const g=el('g',{opacity:0},ui), fs=it.name.length>16?40:48, w=Math.min(660,Math.max(400,it.name.length*fs*.62+160));
+  el('rect',{x:360-w/2,y:1075,width:w,height:110,rx:26,fill:'#0b1a3a','fill-opacity':.9,stroke:'#ffd84d','stroke-width':3},g);
+  el('image',{href:flagHref(it.nat),x:360-w/2+26,y:1108,width:58,height:44,preserveAspectRatio:'none'},g);
+  text((360-w/2+100+360+w/2-20)/2,1146,it.name,fs,{},g); return g;});
+const outro=el('g',{opacity:0},ui);
+el('rect',{x:80,y:930,width:560,height:250,rx:30,fill:'#0b1a3a','fill-opacity':.88,stroke:'#7dffb5','stroke-opacity':.6,'stroke-width':2},outro);
+text(360,1010,'Nechtasini topdingiz?',44,{},outro);
+text(360,1075,'Izohda yozing 👇',40,{color:'#ffd84d'},outro);
+text(360,1135,'Obuna bo‘ling — ertaga yangisi!',28,{w:700,color:'#9fe8c4'},outro);
+
+function setGlobe(c,R){proj.rotate([-c[0],-c[1]]).scale(R); ids.forEach(e=>e.setAttribute('r',R)); atmo.setAttribute('r',R*1.15);
+  gratP.setAttribute('d',path(grat)); landP.setAttribute('d',path(land)); bordP.setAttribute('d',path(mesh));}
+function lerpCam(a,b,t){const e=eio(t), ip=d3.geoInterpolate(a.c,b.c), d=d3.geoDistance(a.c,b.c), out=Math.min(.5,d*.3+.1);
+  return {c:ip(e),R:Math.exp(Math.log(a.R)+(Math.log(b.R)-Math.log(a.R))*e)*(1-out*Math.sin(Math.PI*e))};}
+function arcPts(a,b,p){const ip=d3.geoInterpolate(a,b), n=Math.max(2,Math.ceil(40*p)), out=[];for(let k=0;k<=n;k++) out.push(ip(p*k/n)); return out;}
+const COLS=['#ffd84d','#ff7a59','#7dffb5','#5ee7ff','#ff6fd8','#c4a7ff'];
+window.render=function(t){
+  const N=LIST.length; let i=TL.findIndex(x=>t>=x.s&&t<x.end), cam;
+  if(t<INTRO) cam={c:[10+t*10,30],R:300};
+  else if(i>=0){const tl=TL[i], lt=t-tl.s, prev=i===0?{c:[10+INTRO*10,30],R:300}:{c:TL[i-1].center,R:TL[i-1].R};
+    // kamera joriy klub tomonga biroz siljiydi
+    const k=Math.min(tl.pts.length-1,Math.max(0,Math.floor((t-tl.hop0)/HOP))), tgt=t>=tl.hop0?d3.geoInterpolate(tl.center,tl.pts[k])(.25):tl.center;
+    cam=lt<T_FLY?lerpCam(prev,{c:tl.center,R:tl.R},lt/T_FLY):{c:tgt,R:tl.R};
+    if(lt>=T_FLY){const prevT=k>0?d3.geoInterpolate(tl.center,tl.pts[k-1])(.25):tl.center, ph=Math.min(1,(t-tl.hop0-k*HOP)/.6);
+      cam={c:d3.geoInterpolate(prevT,tgt)(eio(Math.max(0,ph))),R:tl.R};}}
+  else {const last=TL[N-1], lt=t-last.end; cam={c:[last.center[0]+lt*12,last.center[1]],R:last.R+(300-last.R)*ease(lt/1.2)}; }
+  setGlobe(cam.c,cam.R);
+  arcsG.innerHTML=''; marksG.innerHTML=''; revs.forEach(g=>g.setAttribute('opacity',0)); tg.setAttribute('opacity',0); card.setAttribute('opacity',0);
+  if(i>=0){
+    const it=LIST[i], tl=TL[i], col=COLS[i%COLS.length];
+    const step=(t-tl.hop0)/HOP;           // nechanchi klubgacha yetdik (kasr)
+    for(let k=0;k<tl.pts.length;k++){
+      if(step<k) break;
+      if(k>0){const p=Math.min(1,(step-k+1)/1); const d=path({type:'LineString',coordinates:arcPts(tl.pts[k-1],tl.pts[k],Math.max(.001,p))});
+        if(d){el('path',{d,fill:'none',stroke:col,'stroke-width':4,'stroke-linecap':'round',filter:'url(#glow)'},arcsG);}}
+      const xy=proj(tl.pts[k]); const visible=d3.geoDistance(tl.pts[k],[-proj.rotate()[0],-proj.rotate()[1]])<Math.PI/2;
+      if(xy&&visible&&step>=k+.0){const a=ease((step-k)/.3);
+        el('circle',{cx:xy[0],cy:xy[1],r:11*a,fill:col,stroke:'#fff','stroke-width':2.5},marksG);
+        text(xy[0],xy[1]+5,String(k+1),13,{color:'#0b1a3a'},marksG);}
+    }
+    if(step>=0&&t<tl.rev){const k=Math.min(it.clubs.length-1,Math.floor(step)), c=it.clubs[k];
+      card.setAttribute('opacity',ease((step)/.3)); cardFlag.setAttribute('href',flagHref(c[0]));
+      cardClub.textContent=c[1]; cardClub.setAttribute('font-size',c[1].length>18?30:36); cardYrs.textContent=c[2]; cardNum.textContent=(k+1)+'/'+it.clubs.length;}
+    const cd=t-tl.cd; if(cd>=0&&t<tl.rev){tg.setAttribute('opacity',1); const n=3-Math.floor(cd), fr=cd%1; tnum.textContent=n;
+      tarc.setAttribute('stroke',n===3?'#46d39a':n===2?'#ffc94d':'#ff6b6b'); tarc.setAttribute('stroke-dashoffset',ARC*fr);}
+    if(t>=tl.rev){const r=ease((t-tl.rev)/.25); revs[i].setAttribute('opacity',r*ease((tl.end-t)/.2));}
+    sub.textContent='Daraja: '+it.level+' · transfer yo‘li'; sub.setAttribute('fill',LEVEL_COLOR[it.level]||'#fff');
+    counter.textContent=(i+1)+'/'+N; outro.setAttribute('opacity',0);
+  } else { counter.textContent=''; outro.setAttribute('opacity',t>=TL[N-1].end?ease((t-TL[N-1].end)/.4):0);
+    sub.textContent=t<INTRO?'transfer yo‘li bo‘yicha toping':''; sub.setAttribute('fill','#9fe8c4'); }
+};
+Promise.all([document.fonts.load('800 48px M','Aö‘ńş'),document.fonts.load('700 28px M','Aö‘')]).then(()=>{render(0);window.READY=true;});
+</script></body></html>

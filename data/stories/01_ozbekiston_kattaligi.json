@@ -1,0 +1,339 @@
+{
+ "id": "ozbekiston_kattaligi",
+ "title": "O‘zbekiston aslida qanchalik katta? 🇺🇿🌍",
+ "caption": "🇺🇿 O‘zbekiston kichik davlatmi? Uni Yevropa va Yaponiya ustiga HAQIQIY o‘lchamda qo‘yib ko‘rdik.\nQaysi biri hayratlantirdi? Izohlarda yozing 👇\n\nManba: Wikipedia (maydonlar), xarita — Natural Earth.",
+ "tags": "#oʻzbekiston #geografiya #xarita #truesize #bilim #geoilm",
+ "facts": {
+  "O‘zbekiston": "448 978 km² (Wikipedia, dunyoda 55-o‘rin)",
+  "Germaniya": "357 022 km²",
+  "Avstriya": "83 879 km²",
+  "Shvetsiya": "~450 000 km²",
+  "Yaponiya": "377 873 km²",
+  "Buyuk Britaniya": "242 900 km²"
+ },
+ "scenes": [
+  {
+   "dur": 4.5,
+   "big": true,
+   "t1": "O‘ZBEKISTON",
+   "t2": "KICHIK DAVLATMI?",
+   "c2": "#ff3d7f",
+   "view": {
+    "c": [
+     52,
+     38
+    ],
+    "s": 380
+   },
+   "items": [
+    {
+     "id": "860",
+     "color": "#3fd0ff",
+     "glow": true
+    }
+   ]
+  },
+  {
+   "dur": 5,
+   "t1": "Maydoni: 448 978 km²",
+   "t2": "dunyoda 55-o‘rin",
+   "c2": "#3fd0ff",
+   "view": {
+    "c": [
+     64,
+     41
+    ],
+    "s": 1500
+   },
+   "items": [
+    {
+     "id": "860",
+     "color": "#3fd0ff",
+     "glow": true
+    }
+   ],
+   "pills": [
+    {
+     "t": "O‘zbekiston — 449 ming km²",
+     "c": "#3fd0ff",
+     "at": 1.4
+    }
+   ]
+  },
+  {
+   "dur": 8,
+   "t1": "Uni Germaniya ustiga",
+   "t2": "haqiqiy o‘lchamda qo‘yamiz...",
+   "c2": "#ffb347",
+   "view": {
+    "c": [
+     13,
+     50
+    ],
+    "s": 1050
+   },
+   "items": [
+    {
+     "id": "276",
+     "color": "#ffb347"
+    },
+    {
+     "id": "860",
+     "color": "#3fd0ff",
+     "op": 0.75,
+     "move": {
+      "to": [
+       10.4,
+       51.1
+      ],
+      "at": 1.0,
+      "dur": 2.6
+     }
+    }
+   ],
+   "pills": [
+    {
+     "t": "O‘zbekiston — 449 ming km²",
+     "c": "#3fd0ff",
+     "at": 4.0
+    },
+    {
+     "t": "Germaniya — 357 ming km²",
+     "c": "#ffb347",
+     "at": 4.6
+    }
+   ],
+   "note": "O‘zbekiston Germaniyadan 1,25 marta katta"
+  },
+  {
+   "dur": 6.5,
+   "t1": "Germaniya + Avstriya",
+   "t2": "≈ O‘zbekiston",
+   "c2": "#3fd0ff",
+   "view": {
+    "c": [
+     12,
+     49.5
+    ],
+    "s": 1700
+   },
+   "items": [
+    {
+     "id": "276",
+     "color": "#ffb347"
+    },
+    {
+     "id": "040",
+     "color": "#ff8a3d"
+    },
+    {
+     "id": "860",
+     "color": "#3fd0ff",
+     "outline": true,
+     "move": {
+      "to": [
+       11.6,
+       49.8
+      ],
+      "at": 0.6,
+      "dur": 1.6
+     }
+    }
+   ],
+   "pills": [
+    {
+     "t": "Ikkalasi — 441 ming km²",
+     "c": "#ffb347",
+     "at": 2.6
+    }
+   ]
+  },
+  {
+   "dur": 7,
+   "t1": "Shvetsiya bilan esa",
+   "t2": "deyarli egizak!",
+   "c2": "#ffe14d",
+   "view": {
+    "c": [
+     17,
+     60
+    ],
+    "s": 900
+   },
+   "items": [
+    {
+     "id": "752",
+     "color": "#ffe14d"
+    },
+    {
+     "id": "860",
+     "color": "#3fd0ff",
+     "op": 0.7,
+     "move": {
+      "to": [
+       16.5,
+       62.5
+      ],
+      "at": 0.8,
+      "dur": 2.4
+     }
+    }
+   ],
+   "pills": [
+    {
+     "t": "Shvetsiya — 450 ming km²",
+     "c": "#ffe14d",
+     "at": 3.6
+    },
+    {
+     "t": "O‘zbekiston — 449 ming km²",
+     "c": "#3fd0ff",
+     "at": 4.2
+    }
+   ]
+  },
+  {
+   "dur": 7,
+   "t1": "Yaponiyadan ham",
+   "t2": "kattaroq",
+   "c2": "#ff6fd8",
+   "view": {
+    "c": [
+     137,
+     37
+    ],
+    "s": 1150
+   },
+   "items": [
+    {
+     "id": "392",
+     "color": "#ff6fd8"
+    },
+    {
+     "id": "860",
+     "color": "#3fd0ff",
+     "op": 0.7,
+     "move": {
+      "to": [
+       137.5,
+       37.5
+      ],
+      "at": 0.8,
+      "dur": 2.4
+     }
+    }
+   ],
+   "pills": [
+    {
+     "t": "Yaponiya — 378 ming km²",
+     "c": "#ff6fd8",
+     "at": 3.6
+    }
+   ]
+  },
+  {
+   "dur": 6.5,
+   "t1": "Buyuk Britaniyadan esa",
+   "t2": "1,85 marta katta",
+   "c2": "#3fd0ff",
+   "view": {
+    "c": [
+     -3,
+     55
+    ],
+    "s": 1250
+   },
+   "items": [
+    {
+     "id": "826",
+     "color": "#b48cff"
+    },
+    {
+     "id": "860",
+     "color": "#3fd0ff",
+     "op": 0.7,
+     "move": {
+      "to": [
+       -2.5,
+       54
+      ],
+      "at": 0.8,
+      "dur": 2.4
+     }
+    }
+   ],
+   "pills": [
+    {
+     "t": "Britaniya — 243 ming km²",
+     "c": "#b48cff",
+     "at": 3.6
+    }
+   ]
+  },
+  {
+   "dur": 5,
+   "t1": "Shunday ekan,",
+   "t2": "O‘zbekiston — kichik emas!",
+   "c2": "#3fd0ff",
+   "view": {
+    "c": [
+     64,
+     41
+    ],
+    "s": 1300
+   },
+   "items": [
+    {
+     "id": "860",
+     "color": "#3fd0ff",
+     "glow": true,
+     "move": {
+      "to": [
+       64.2,
+       41.6
+      ],
+      "at": 0.3,
+      "dur": 1.6
+     }
+    }
+   ],
+   "note": "Xarita shimolni kattalashtiradi — biz haqiqiy o‘lchamda taqqosladik"
+  },
+  {
+   "dur": 4.5,
+   "t1": "KEYINGI VIDEODA:",
+   "t2": "faqat 2 ta shunday davlat bor...",
+   "c2": "#ffd84d",
+   "view": {
+    "c": [
+     64,
+     41
+    ],
+    "s": 1300
+   },
+   "items": [
+    {
+     "id": "860",
+     "color": "#3fd0ff",
+     "glow": true
+    }
+   ]
+  },
+  {
+   "dur": 4.5,
+   "t1": "Qaysi biri",
+   "t2": "hayratlantirdi?",
+   "t3": "Izohlarda yozing ↓",
+   "c2": "#ffffff",
+   "view": {
+    "c": [
+     40,
+     30
+    ],
+    "s": 330
+   },
+   "cta": "OBUNA BO‘LING",
+   "cta2": "yangi xaritalar uchun"
+  }
+ ]
+}
