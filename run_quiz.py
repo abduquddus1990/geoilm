@@ -28,12 +28,13 @@ def main():
     ap.add_argument("--manual", action="store_true",
                     help="avto-joylamasdan, videoni va matnlarni TG_MANUAL_CHAT_IDS ga yuborish (qo'lda joylash uchun)")
     ap.add_argument("--mode", choices=list(MODES), help="davlat | poytaxt | futbolchi (bo'sh bo'lsa — soatga qarab)")
+    ap.add_argument("--region", help="tuman formati uchun viloyat kodi, masalan UZ-TK, UZ-SA")
     ap.add_argument("--keep", action="store_true", help="videoni joylagandan keyin o'chirmaslik")
     args = ap.parse_args()
 
     mode = args.mode or mode_for_now()
     print("Format:", mode)
-    items = pick_questions(mode)
+    items = pick_questions(mode, region=args.region) if mode == "tuman" else pick_questions(mode)
     print("Savollar:", ", ".join(f"{i['name']} ({i['level']})" for i in items))
     video = build_video(mode, items)
     print("Video:", video)

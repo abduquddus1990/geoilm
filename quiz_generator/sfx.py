@@ -2,7 +2,9 @@
 import json, sys, wave
 import numpy as np
 
-def build(events_path: str, out_path: str, voice_wav: str | None = None) -> float:
+def build(events_path: str, out_path: str, voice_wav: str | None = None,
+          answers: list | None = None, outro_wav: str | None = None) -> float:
+    """voice_wav — har savol boshida; answers[i] — i-savol javobi ochilganda; outro_wav — yakunda."""
     sr = 44100
     E = json.load(open(events_path, encoding="utf-8"))
     D = E["D"]
@@ -32,15 +34,24 @@ def build(events_path: str, out_path: str, voice_wav: str | None = None) -> floa
             put(tick, e["cd"] + s, .35 if s < 2 else .45)
         put(ding, e["rev"], .3)
     put(ding, D - 2.6, .35)
-    if voice_wav:  # o'z ovozing: har savol boshida
-        with wave.open(voice_wav, "rb") as w:
+    def load(path):
+        with wave.open(path, "rb") as w:
             v = np.frombuffer(w.readframes(w.getnframes()), dtype=np.int16).astype(np.float64) / 32768
-        v = v / max(1e-9, np.abs(v).max())
-        a /= max(1e-9, np.abs(a).max())
-        a *= 0.55
-        for e in E["ev"]:
-            put(v, e["start"] + 0.15, 0.9)
+        return v / max(1e-9, np.abs(v).max())
 
+    voiced = bool(voice_wav or outro_wav or (answers and any(answers)))
+    if voiced:  # effektlarni pasaytirib, ovozni ustiga qo'yamiz
+        a /= max(1e-9, np.abs(a).max())
+        a *= 0.5
+        if voice_wav:
+            v = load(voice_wav)
+            for e in E["ev"]:
+                put(v, e["start"] + 0.15, 0.9)
+        for e, ans in zip(E["ev"], answers or []):
+            if ans:
+                put(load(ans), e["rev"] + 0.12, 0.95)
+        if outro_wav:
+            put(load(outro_wav), D - 2.4, 0.95)
     a = a / max(1e-9, np.abs(a).max()) * .8
     with wave.open(out_path, "wb") as w:
         w.setnchannels(1); w.setsampwidth(2); w.setframerate(sr)

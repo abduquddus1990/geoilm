@@ -118,19 +118,95 @@ Har biri ishlasa, tayyor.
 
 ## Formatlar va jadval
 
-| Toshkent vaqti | Format | Ma'lumot fayli |
-|---|---|---|
-| 06:20 | Bu qaysi davlat? (xarita, B dizayn) | `data/countries.json` |
-| 21:00 | Poytaxti qaysi? | `data/capitals.json` |
-| 19:00 | Bu qaysi futbolchi? (klublar yo'li) | `data/players.json` |
+| Slot (Toshkent vaqti) | Format |
+|---|---|
+| 06:20 · 19:00 · 21:00 | Har kuni navbat bilan: globus → futbolchi → globus_poytaxt (globusda poytaxt) → davlat (daftar xaritasi) → viloyat → poytaxt (daftar xaritasi) → tuman (tumanlar fayli bo'lsa) |
 
-Har format uchun +1 soatlik zaxira jadval bor; `data/sent.json` bugun yuborilganini eslab qoladi, shuning uchun kuniga har formatdan ko'pi bilan bitta video ketadi.
+Kuniga 3 ta video chiqadi, navbat har kuni siljiydi, shuning uchun formatlar har kuni boshqacha tartibda tushadi. Barcha vaqtlar Toshkent bo'yicha (GitHub cron UTC da, ya'ni 01:20 / 14:00 / 16:00). Har slot uchun +1 soatlik zaxira bor; data/sent.json takror yuborishdan saqlaydi.
 
 Qo'lda tanlash: `python run_quiz.py --mode poytaxt --no-publish`
 
 `players.json` da 68 ta futbolchi bor (15 oson, 24 o‘rtacha, 29 qiyin; 80–90-yillar, 2000-yillar va hozirgi yulduzlar). Yangisini qo'shish: `{"id","name","nat","clubs":[[davlat_kodi,klub,yillar],...]}`, Angliya uchun `ENG`. Klublar yo'li 2–10 ta bo'lsin.
 
-## O'z ovozing
+## 3D globus formati ("globus")
+
+Kosmos fonida aylanuvchi globus har savolda keyingi davlatga uchib boradi va yaqinlashadi. Davlat yorqin rang bilan yonib, atrofida to'lqin tarqaladi. Davlatlar `data/countries.json` dan olinadi, kunlik navbatda birinchi turadi.
+
+```powershell
+python run_quiz.py --mode globus --only telegram
+```
+
+## Tumanlar formati ("Bu qaysi tuman?")
+
+Bir martalik: tumanlarning hozirgi chegaralari OpenStreetMap'dan olinadi.
+
+```powershell
+pip install osm2geojson
+python tools/fetch_districts.py
+```
+
+Natija `data/uz_districts.geojson` fayliga yoziladi, nomlar o'zbekcha lotin yozuvida bo'ladi. Shu fayl paydo bo'lgandan keyin "tuman" formati avtomatik navbatga qo'shiladi: har videoda bitta viloyat, 8 ta tuman. Viloyatni o'zing tanlashing ham mumkin:
+
+```powershell
+python run_quiz.py --mode tuman --region UZ-TK --only telegram    # Toshkent shahri tumanlari
+python run_quiz.py --mode tuman --region UZ-SA --only telegram    # Samarqand viloyati
+```
+
+Viloyat kodlari: UZ-AN Andijon, UZ-BU Buxoro, UZ-FA Farg'ona, UZ-JI Jizzax, UZ-NG Namangan, UZ-NW Navoiy, UZ-QA Qashqadaryo, UZ-QR Qoraqalpog'iston, UZ-SA Samarqand, UZ-SI Sirdaryo, UZ-SU Surxondaryo, UZ-TK Toshkent shahri, UZ-TO Toshkent viloyati, UZ-XO Xorazm.
+
+## Futbolchilar bazasi (Wikidata)
+
+```powershell
+python tools/fetch_players.py --limit 200 --uz
+```
+
+Bu buyruq Wikidata'dan ~150–200 ta mashhur futbolchi va ularning klub tarixini olib, `data/players_auto.json` faylini yasaydi. `--uz` qo'shilsa, O'zbekiston terma jamoasi futbolchilari ham kiradi. GitHub'da `players.yml` workflow buni har oyning 1-kuni o'zi bajaradi. Xato topsang, to'g'ri variantini `data/players.json`'ga qo'lda yoz, qo'ldagi ma'lumot ustun turadi.
+
+## Manbalar va litsenziyalar
+
+- Bayroqlar: [flag-icons](https://github.com/lipis/flag-icons) (MIT)
+- Viloyat chegaralari: [geoBoundaries](https://www.geoboundaries.org), © OpenStreetMap hissadorlari (ODbL). Viloyat videolari izohiga manba avtomatik yoziladi.
+- Futbolchilar: [Wikidata](https://www.wikidata.org) (CC0)
+
+## VS Code tugmalari (eng oson yo'l)
+
+`Ctrl + Shift + P` → **Tasks: Run Task** → ro'yxatdan tanlang:
+
+| Vazifa | Qachon |
+|---|---|
+| GeoIlm: 1) Bir martalik o'rnatish | yangi fayllarni ko'chirgandan keyin |
+| GeoIlm: 2) Futbolchilar bazasini yangilash | oyiga bir marta |
+| GeoIlm: 3) Ovozlarni yasash (Kaggle GPU) | bir marta, ovoz yozuvingiz bilan |
+| GeoIlm: 3b) Yangi iboralarga ovoz qo'shish | yangi davlat yoki futbolchi qo'shilganda |
+| GeoIlm: 4) Video yasab botga yuborish | sinov yoki qo'lda yuborish |
+| GeoIlm: 5) Faqat video yasash | ko'rib chiqish uchun, `out/` papkasida |
+
+## Kaggle sozlash (bir marta, 5 daqiqa)
+
+Ovozlar Kaggle'ning bepul GPU'sida (haftasiga 30 soat) avtomatik yasaladi.
+
+1. [kaggle.com](https://www.kaggle.com) da ro'yxatdan o'ting (Google akkaunt bilan).
+2. **Telefon raqamini tasdiqlang:** `Settings → Phone verification`. Busiz GPU va internet yoqilmaydi.
+3. `Settings → API → Create Legacy API Key` → `kaggle.json` yuklab olinadi.
+4. Faylni shu papkaga qo'ying: `C:\Users\Surface\.kaggle\kaggle.json` (`.kaggle` papkasi yo'q bo'lsa, yarating).
+5. Run Task → **GeoIlm: 3) Ovozlarni yasash** → ovoz yozuvingiz yo'lini kiriting. 20–40 daqiqa kuting, qolgani avtomatik.
+
+Kaggle ishlamasa, zaxira yo'l: quyidagi Colab usuli.
+
+## Avtomatik o'zbekcha ovoz (Navoiy TTS)
+
+Video har savolda "Bu qaysi davlat?" deydi, javob ochilganda nomini aytadi ("Italiya!"), oxirida esa "Nechtasini topdingiz? Izohda yozing!" deydi.
+
+Navoiy TTS faqat NVIDIA GPU'da ishlaydi. Shuning uchun barcha iboralar **bir marta** bepul Google Colab'da o'qitilib, `.wav` fayl qilib saqlanadi. Video yasashda GPU kerak bo'lmaydi.
+
+1. `python tools/voice_lines.py` — `data/voice_lines.json` yasaydi (barcha iboralar ro'yxati).
+2. [colab.research.google.com](https://colab.research.google.com) → `File → Upload notebook` → `tools/navoiy_colab.ipynb` → `Runtime → Change runtime type → T4 GPU`.
+3. Kataklarni yuqoridan pastga ishga tushir. 2-qadamda `reference.wav` (o'z ovozing, 6–12 soniya) va `voice_lines.json` ni yuklaysan.
+4. Yuklab olingan `voice_lines.zip` ni `quiz_generator/voice/lines/` papkasiga och.
+
+Shundan keyin har bir videoga ovoz o'zi qo'shiladi, izohga esa "Ovoz: Navoiy TTS (sun'iy intellekt)" yozuvi tushadi. Biror ibora uchun `.wav` bo'lmasa, o'sha joy ovozsiz o'tadi, xato bermaydi.
+
+## O'z ovozing (ixtiyoriy, TTS o'rniga)
 
 `quiz_generator/voice/` papkasiga fayllarni joylasang, ovoz har savol boshida avtomatik qo'yiladi:
 

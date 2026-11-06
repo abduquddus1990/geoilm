@@ -1,0 +1,74 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "GeoIlm: 1) Bir martalik o'rnatish",
+      "type": "shell",
+      "command": "pip install -r requirements.txt; npm install --prefix quiz_generator",
+      "problemMatcher": []
+    },
+    {
+      "label": "GeoIlm: 2) Futbolchilar bazasini yangilash (Wikidata)",
+      "type": "shell",
+      "command": "python tools/fetch_players.py --limit 200 --uz",
+      "problemMatcher": []
+    },
+    {
+      "label": "GeoIlm: 3) Ovozlarni yasash (Kaggle GPU)",
+      "type": "shell",
+      "command": "python tools/make_voices.py --ref '${input:refFile}'",
+      "problemMatcher": []
+    },
+    {
+      "label": "GeoIlm: 3b) Yangi iboralarga ovoz qo'shish (avvalgi ovoz bilan)",
+      "type": "shell",
+      "command": "python tools/make_voices.py",
+      "problemMatcher": []
+    },
+    {
+      "label": "GeoIlm: 2b) Tumanlar chegaralarini olish (OpenStreetMap)",
+      "type": "shell",
+      "command": "pip install osm2geojson; python tools/fetch_districts.py",
+      "problemMatcher": []
+    },
+    {
+      "label": "GeoIlm: 4b) Tuman videosi (viloyat tanlab)",
+      "type": "shell",
+      "command": "python run_quiz.py --mode tuman --region ${input:region} --only telegram",
+      "problemMatcher": []
+    },
+    {
+      "label": "GeoIlm: 4) Video yasab botga yuborish",
+      "type": "shell",
+      "command": "python run_quiz.py --mode ${input:mode} --only telegram",
+      "problemMatcher": []
+    },
+    {
+      "label": "GeoIlm: 5) Faqat video yasash (yubormasdan)",
+      "type": "shell",
+      "command": "python run_quiz.py --mode ${input:mode} --no-publish --keep",
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "mode",
+      "type": "pickString",
+      "description": "Qaysi format?",
+      "options": ["globus", "globus_poytaxt", "davlat", "poytaxt", "futbolchi", "viloyat", "tuman"],
+      "default": "globus"
+    },
+    {
+      "id": "region",
+      "type": "pickString",
+      "description": "Qaysi viloyat?",
+      "options": ["UZ-TK", "UZ-TO", "UZ-SA", "UZ-BU", "UZ-FA", "UZ-AN", "UZ-NG", "UZ-QA", "UZ-SU", "UZ-XO", "UZ-NW", "UZ-JI", "UZ-SI", "UZ-QR"],
+      "default": "UZ-TK"
+    },
+    {
+      "id": "refFile",
+      "type": "promptString",
+      "description": "Ovoz yozuvingiz yo'li (masalan C:\\Users\\Surface\\Downloads\\ovoz.m4a)"
+    }
+  ]
+}

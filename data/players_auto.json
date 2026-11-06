@@ -1,0 +1,1636 @@
+{
+ "oson": [
+  {
+   "id": "wd_Q615",
+   "name": "Lionel Messi",
+   "nat": "AR",
+   "clubs": [
+    [
+     "ES",
+     "Barcelona Atlètic",
+     "2004–2005"
+    ],
+    [
+     "FR",
+     "Paris Saint-Germain",
+     "2021–2023"
+    ],
+    [
+     "US",
+     "Inter Miami",
+     "2023–"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q11571",
+   "name": "Krishtianu Ronaldu",
+   "nat": "PT",
+   "clubs": [
+    [
+     "PT",
+     "Sporting",
+     "2002–2003"
+    ],
+    [
+     "ES",
+     "Real Madrid Club de Fútbol",
+     "2009–2018"
+    ],
+    [
+     "IT",
+     "Juventus",
+     "2018–2021"
+    ],
+    [
+     "SA",
+     "Al-Nassr",
+     "2023–"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q21621995",
+   "name": "Kilian Mbappe",
+   "nat": "FR",
+   "clubs": [
+    [
+     "MC",
+     "Monaco",
+     "2015–2018"
+    ],
+    [
+     "FR",
+     "Paris Saint-Germain",
+     "2017–2024"
+    ],
+    [
+     "ES",
+     "Real Madrid Club de Fútbol",
+     "2024–"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q46896",
+   "name": "Zlatan Ibrahimović",
+   "nat": "SE",
+   "clubs": [
+    [
+     "SE",
+     "Malmö FF",
+     "1999–2001"
+    ],
+    [
+     "IT",
+     "Juventus",
+     "2004–2006"
+    ],
+    [
+     "IT",
+     "Inter",
+     "2006–2009"
+    ],
+    [
+     "IT",
+     "Milan",
+     "2010–2012"
+    ],
+    [
+     "FR",
+     "Paris Saint-Germain",
+     "2012–2016"
+    ],
+    [
+     "US",
+     "LA Galaxy",
+     "2018–2019"
+    ],
+    [
+     "IT",
+     "Milan",
+     "2020–2023"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q39444",
+   "name": "Ronaldinho",
+   "nat": "BR",
+   "clubs": [
+    [
+     "BR",
+     "Grêmio FBPA",
+     "1998–2001"
+    ],
+    [
+     "FR",
+     "Paris Saint-Germain",
+     "2001–2003"
+    ],
+    [
+     "IT",
+     "Milan",
+     "2008–2010"
+    ],
+    [
+     "BR",
+     "Clube de Regatas do Flamengo",
+     "2011–2012"
+    ],
+    [
+     "BR",
+     "Clube Atlético Mineiro",
+     "2012–2014"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q68060",
+   "name": "Gianluigi Buffon",
+   "nat": "IT",
+   "clubs": [
+    [
+     "IT",
+     "Parma Calcio 1913",
+     "1995–2001"
+    ],
+    [
+     "IT",
+     "Juventus",
+     "2001–2018"
+    ],
+    [
+     "FR",
+     "Paris Saint-Germain",
+     "2018–2019"
+    ],
+    [
+     "IT",
+     "Juventus",
+     "2019–2021"
+    ],
+    [
+     "IT",
+     "Parma Calcio 1913",
+     "2021–2023"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q26517",
+   "name": "Luiz Suarez",
+   "nat": "UY",
+   "clubs": [
+    [
+     "UY",
+     "Club Nacional de Football",
+     "2005–2006"
+    ],
+    [
+     "ES",
+     "Atlético Madrid",
+     "2020–2022"
+    ],
+    [
+     "UY",
+     "Club Nacional de Football",
+     "2022"
+    ],
+    [
+     "BR",
+     "Grêmio FBPA",
+     "2023"
+    ],
+    [
+     "US",
+     "Inter Miami",
+     "2024–"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q483837",
+   "name": "Luka Modrić",
+   "nat": "HR",
+   "clubs": [
+    [
+     "BA",
+     "HŠK Zrinjski Mostar",
+     "2003–2004"
+    ],
+    [
+     "HR",
+     "GNK Dinamo Zagreb",
+     "2003–2008"
+    ],
+    [
+     "HR",
+     "NK Inter Zaprešić",
+     "2004–2005"
+    ],
+    [
+     "ES",
+     "Real Madrid Club de Fútbol",
+     "2012–2025"
+    ],
+    [
+     "IT",
+     "Milan",
+     "2025–"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q1912",
+   "name": "Karim Benzema",
+   "nat": "FR",
+   "clubs": [
+    [
+     "FR",
+     "Olympique Lyonnais",
+     "2004–2009"
+    ],
+    [
+     "ES",
+     "Real Madrid Club de Fútbol",
+     "2009–2023"
+    ],
+    [
+     "SA",
+     "Al Ittihad",
+     "2023–2026"
+    ],
+    [
+     "SA",
+     "Al Hilal SFC",
+     "2026"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q83488",
+   "name": "Mesut Özil",
+   "nat": "DE",
+   "clubs": [
+    [
+     "DE",
+     "Schalke 04",
+     "2006–2008"
+    ],
+    [
+     "DE",
+     "SV Werder Bremen",
+     "2008–2010"
+    ],
+    [
+     "ES",
+     "Real Madrid Club de Fútbol",
+     "2009–2013"
+    ],
+    [
+     "TR",
+     "Fenerbahçe Istanbul",
+     "2021–2022"
+    ],
+    [
+     "TR",
+     "İstanbul Başakşehir F.K.",
+     "2022–2023"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q151269",
+   "name": "Robert Lewandowski",
+   "nat": "PL",
+   "clubs": [
+    [
+     "PL",
+     "Znicz Pruszków",
+     "2006–2008"
+    ],
+    [
+     "PL",
+     "Lech Poznań",
+     "2008–2010"
+    ],
+    [
+     "DE",
+     "Borussia Dortmund",
+     "2010–2014"
+    ],
+    [
+     "DE",
+     "Bayern Munich",
+     "2014–2022"
+    ],
+    [
+     "US",
+     "Chicago Fire",
+     "2026–"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q43729",
+   "name": "Andrés Iniesta",
+   "nat": "ES",
+   "clubs": [
+    [
+     "ES",
+     "Barcelona Atlètic",
+     "2001–2003"
+    ],
+    [
+     "JP",
+     "Vissel Kobe",
+     "2018–2023"
+    ],
+    [
+     "AE",
+     "Emirates Club",
+     "2023–2024"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q1354960",
+   "name": "Muhammad Salah",
+   "nat": "EG",
+   "clubs": [
+    [
+     "CH",
+     "Basel",
+     "2012–2014"
+    ],
+    [
+     "IT",
+     "ACF Fiorentina",
+     "2015"
+    ],
+    [
+     "IT",
+     "Roma",
+     "2015–2017"
+    ],
+    [
+     "TR",
+     "Trabzonspor",
+     "2026–"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q80471",
+   "name": "Miroslav Klose",
+   "nat": "DE",
+   "clubs": [
+    [
+     "DE",
+     "FC 08 Homburg",
+     "1998–1999"
+    ],
+    [
+     "DE",
+     "1. FC Kaiserslautern",
+     "1999–2004"
+    ],
+    [
+     "DE",
+     "SV Werder Bremen",
+     "2004–2007"
+    ],
+    [
+     "DE",
+     "Bayern Munich",
+     "2007–2011"
+    ],
+    [
+     "IT",
+     "Lazio",
+     "2011–2016"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q455462",
+   "name": "Antoine Griezmann",
+   "nat": "FR",
+   "clubs": [
+    [
+     "ES",
+     "Real Sociedad",
+     "2009–2014"
+    ],
+    [
+     "ES",
+     "Atlético Madrid",
+     "2014–2026"
+    ],
+    [
+     "US",
+     "Orlando City",
+     "2026–"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q531814",
+   "name": "Kaká",
+   "nat": "BR",
+   "clubs": [
+    [
+     "BR",
+     "São Paulo",
+     "2001–2003"
+    ],
+    [
+     "IT",
+     "Milan",
+     "2003–2009"
+    ],
+    [
+     "ES",
+     "Real Madrid Club de Fútbol",
+     "2009–2013"
+    ],
+    [
+     "IT",
+     "Milan",
+     "2013–2014"
+    ],
+    [
+     "BR",
+     "São Paulo",
+     "2014"
+    ],
+    [
+     "US",
+     "Orlando City",
+     "2014–2017"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q28967995",
+   "name": "Erling Xoland",
+   "nat": "NO",
+   "clubs": [
+    [
+     "NO",
+     "Bryne",
+     "2016–2017"
+    ],
+    [
+     "NO",
+     "Molde",
+     "2017–2019"
+    ],
+    [
+     "AT",
+     "FC Red Bull Salzburg",
+     "2019–2020"
+    ],
+    [
+     "DE",
+     "Borussia Dortmund",
+     "2020–2022"
+    ]
+   ]
+  }
+ ],
+ "o‘rtacha": [
+  {
+   "id": "wd_Q357984",
+   "name": "Kevin De Bruyne",
+   "nat": "BE",
+   "clubs": [
+    [
+     "DE",
+     "SV Werder Bremen",
+     "2012–2013"
+    ],
+    [
+     "DE",
+     "VfL Wolfsburg",
+     "2014–2015"
+    ],
+    [
+     "IT",
+     "Napoli",
+     "2025–"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q209942",
+   "name": "Sadio Mane",
+   "nat": "SN",
+   "clubs": [
+    [
+     "FR",
+     "Metz",
+     "2010–2012"
+    ],
+    [
+     "AT",
+     "FC Red Bull Salzburg",
+     "2012–2014"
+    ],
+    [
+     "DE",
+     "Bayern Munich",
+     "2022–2023"
+    ],
+    [
+     "SA",
+     "Al-Nassr",
+     "2023–"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q42731",
+   "name": "Fernando Torres",
+   "nat": "ES",
+   "clubs": [
+    [
+     "ES",
+     "Atlético Madrid",
+     "1995–2007"
+    ],
+    [
+     "IT",
+     "Milan",
+     "2014–2015"
+    ],
+    [
+     "ES",
+     "Atlético Madrid",
+     "2015–2016"
+    ],
+    [
+     "IT",
+     "Milan",
+     "2015–2016"
+    ],
+    [
+     "ES",
+     "Atlético Madrid",
+     "2016–2018"
+    ],
+    [
+     "JP",
+     "Sagan Tosu",
+     "2018–2019"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q48892",
+   "name": "Didier Drogba",
+   "nat": "CI",
+   "clubs": [
+    [
+     "FR",
+     "En Avant de Guingamp",
+     "2002–2003"
+    ],
+    [
+     "FR",
+     "Olympique de Marseille",
+     "2003–2004"
+    ],
+    [
+     "TR",
+     "Galatasaray S.K.",
+     "2013–2014"
+    ],
+    [
+     "CA",
+     "CF Montréal",
+     "2015–2016"
+    ],
+    [
+     "US",
+     "Phoenix Rising",
+     "2017–2018"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q129700",
+   "name": "Mario Balotelli",
+   "nat": "IT",
+   "clubs": [
+    [
+     "IT",
+     "Inter",
+     "2007–2010"
+    ],
+    [
+     "IT",
+     "Milan",
+     "2013–2016"
+    ],
+    [
+     "FR",
+     "OGC Nice",
+     "2016–2019"
+    ],
+    [
+     "FR",
+     "Olympique de Marseille",
+     "2019"
+    ],
+    [
+     "IT",
+     "Brescia Calcio",
+     "2019–2020"
+    ],
+    [
+     "IT",
+     "Monza",
+     "2020–2021"
+    ],
+    [
+     "TR",
+     "Adana Demirspor",
+     "2021–2022"
+    ],
+    [
+     "CH",
+     "Sion",
+     "2022–2023"
+    ],
+    [
+     "TR",
+     "Adana Demirspor",
+     "2023–2024"
+    ],
+    [
+     "IT",
+     "Genoa CFC",
+     "2024–2025"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q368441",
+   "name": "James Rodríguez",
+   "nat": "CO",
+   "clubs": [
+    [
+     "PT",
+     "Porto",
+     "2010–2013"
+    ],
+    [
+     "MC",
+     "Monaco",
+     "2013–2014"
+    ],
+    [
+     "ES",
+     "Real Madrid Club de Fútbol",
+     "2014–2020"
+    ],
+    [
+     "DE",
+     "Bayern Munich",
+     "2017–2019"
+    ],
+    [
+     "QA",
+     "Al-Rayyan",
+     "2021–2022"
+    ],
+    [
+     "BR",
+     "São Paulo",
+     "2023–2024"
+    ],
+    [
+     "ES",
+     "Rayo Vallecano",
+     "2024–2025"
+    ],
+    [
+     "MX",
+     "Club León",
+     "2025"
+    ],
+    [
+     "US",
+     "Minnesota United",
+     "2026"
+    ],
+    [
+     "CO",
+     "Atlético Nacional",
+     "2026–"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q1255625",
+   "name": "Samuel Eto'o",
+   "nat": "CM",
+   "clubs": [
+    [
+     "ES",
+     "CD Leganés",
+     "1997–1998"
+    ],
+    [
+     "ES",
+     "Real Madrid Club de Fútbol",
+     "1997–2000"
+    ],
+    [
+     "ES",
+     "RCD Espanyol de Barcelona",
+     "1999"
+    ],
+    [
+     "ES",
+     "RCD Mallorca",
+     "2000–2004"
+    ],
+    [
+     "IT",
+     "Inter",
+     "2009–2011"
+    ],
+    [
+     "TR",
+     "Antalyaspor",
+     "2015–2018"
+    ],
+    [
+     "TR",
+     "Konyaspor",
+     "2018"
+    ],
+    [
+     "QA",
+     "Qatar",
+     "2018–2019"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q134976",
+   "name": "Lukas Podolski",
+   "nat": "DE",
+   "clubs": [
+    [
+     "DE",
+     "1. FC Köln",
+     "2003–2006"
+    ],
+    [
+     "DE",
+     "Bayern Munich",
+     "2006–2009"
+    ],
+    [
+     "DE",
+     "1. FC Köln",
+     "2009–2012"
+    ],
+    [
+     "IT",
+     "Inter",
+     "2015"
+    ],
+    [
+     "TR",
+     "Galatasaray S.K.",
+     "2015–2017"
+    ],
+    [
+     "JP",
+     "Vissel Kobe",
+     "2017–2020"
+    ],
+    [
+     "TR",
+     "Antalyaspor",
+     "2020–2021"
+    ],
+    [
+     "PL",
+     "Górnik Zabrze",
+     "2021–2026"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q483309",
+   "name": "Sergio Ramos",
+   "nat": "ES",
+   "clubs": [
+    [
+     "ES",
+     "Sevilla",
+     "2004–2005"
+    ],
+    [
+     "ES",
+     "Real Madrid Club de Fútbol",
+     "2005–2021"
+    ],
+    [
+     "FR",
+     "Paris Saint-Germain",
+     "2021–2023"
+    ],
+    [
+     "ES",
+     "Sevilla",
+     "2023–2024"
+    ],
+    [
+     "MX",
+     "Club de Fútbol Monterrey",
+     "2025"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q1911",
+   "name": "Olivier Giroud",
+   "nat": "FR",
+   "clubs": [
+    [
+     "FR",
+     "Grenoble Foot 38",
+     "2005–2008"
+    ],
+    [
+     "FR",
+     "Istres",
+     "2007–2008"
+    ],
+    [
+     "FR",
+     "Tours",
+     "2008–2010"
+    ],
+    [
+     "FR",
+     "Montpellier Hérault Sport Club",
+     "2010–2012"
+    ],
+    [
+     "IT",
+     "Milan",
+     "2021–2024"
+    ],
+    [
+     "US",
+     "Los Angeles",
+     "2024–2025"
+    ],
+    [
+     "FR",
+     "Lille OSC",
+     "2025–"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q1918",
+   "name": "Franck Ribéry",
+   "nat": "FR",
+   "clubs": [
+    [
+     "FR",
+     "US Boulogne",
+     "2000–2002"
+    ],
+    [
+     "FR",
+     "Olympique Alès",
+     "2002–2003"
+    ],
+    [
+     "FR",
+     "Stade Brestois 29",
+     "2003–2004"
+    ],
+    [
+     "FR",
+     "Metz",
+     "2004–2005"
+    ],
+    [
+     "TR",
+     "Galatasaray S.K.",
+     "2005"
+    ],
+    [
+     "FR",
+     "Olympique de Marseille",
+     "2005–2007"
+    ],
+    [
+     "DE",
+     "Bayern Munich",
+     "2007–2019"
+    ],
+    [
+     "IT",
+     "ACF Fiorentina",
+     "2019–2021"
+    ],
+    [
+     "IT",
+     "U.S. Salernitana 1919",
+     "2021–2022"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q313316",
+   "name": "Romelu Lukaku",
+   "nat": "BE",
+   "clubs": [
+    [
+     "IT",
+     "Inter",
+     "2019–2023"
+    ],
+    [
+     "IT",
+     "Roma",
+     "2023–2024"
+    ],
+    [
+     "IT",
+     "Napoli",
+     "2024–2026"
+    ],
+    [
+     "TR",
+     "Fenerbahçe Istanbul",
+     "2026–"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q208104",
+   "name": "Xabi Alonso",
+   "nat": "ES",
+   "clubs": [
+    [
+     "ES",
+     "Antiguoko",
+     "1990–1999"
+    ],
+    [
+     "ES",
+     "SD Eibar",
+     "2000–2001"
+    ],
+    [
+     "ES",
+     "Real Sociedad",
+     "2000–2004"
+    ],
+    [
+     "ES",
+     "Real Madrid Club de Fútbol",
+     "2009–2014"
+    ],
+    [
+     "DE",
+     "Bayern Munich",
+     "2014–2017"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q261534",
+   "name": "Diego Forlán",
+   "nat": "UY",
+   "clubs": [
+    [
+     "AR",
+     "Club Atlético Independiente",
+     "1997–2002"
+    ],
+    [
+     "ES",
+     "Villarreal",
+     "2004–2007"
+    ],
+    [
+     "ES",
+     "Atlético Madrid",
+     "2007–2011"
+    ],
+    [
+     "IT",
+     "Inter",
+     "2011–2012"
+    ],
+    [
+     "JP",
+     "Cerezo Osaka",
+     "2014–2015"
+    ],
+    [
+     "UY",
+     "Club Atlético Peñarol",
+     "2015–2016"
+    ],
+    [
+     "IN",
+     "Mumbai City",
+     "2016"
+    ],
+    [
+     "HK",
+     "Kitchee",
+     "2018"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q43926",
+   "name": "Andrea Pirlo",
+   "nat": "IT",
+   "clubs": [
+    [
+     "IT",
+     "Brescia Calcio",
+     "1995–1998"
+    ],
+    [
+     "IT",
+     "Inter",
+     "1998–2001"
+    ],
+    [
+     "IT",
+     "Reggina 1914",
+     "1999–2000"
+    ],
+    [
+     "IT",
+     "Brescia Calcio",
+     "2001"
+    ],
+    [
+     "IT",
+     "Milan",
+     "2001–2011"
+    ],
+    [
+     "IT",
+     "Juventus",
+     "2011–2015"
+    ],
+    [
+     "US",
+     "New York City",
+     "2015–2017"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q20851003",
+   "name": "Usmon Dembele",
+   "nat": "FR",
+   "clubs": [
+    [
+     "FR",
+     "Évreux FC 27",
+     "2009–2010"
+    ],
+    [
+     "DE",
+     "Borussia Dortmund",
+     "2016–2017"
+    ],
+    [
+     "FR",
+     "Paris Saint-Germain",
+     "2023–"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q83006",
+   "name": "David Villa",
+   "nat": "ES",
+   "clubs": [
+    [
+     "ES",
+     "Sporting de Gijón",
+     "2001–2003"
+    ],
+    [
+     "ES",
+     "Real Zaragoza",
+     "2003–2005"
+    ],
+    [
+     "ES",
+     "Valencia",
+     "2005–2010"
+    ],
+    [
+     "ES",
+     "Atlético Madrid",
+     "2013–2014"
+    ],
+    [
+     "AU",
+     "Melbourne City",
+     "2014"
+    ],
+    [
+     "US",
+     "New York City",
+     "2014–2018"
+    ],
+    [
+     "JP",
+     "Vissel Kobe",
+     "2019–2020"
+    ]
+   ]
+  }
+ ],
+ "qiyin": [
+  {
+   "id": "wd_Q251683",
+   "name": "Angel di Maria",
+   "nat": "AR",
+   "clubs": [
+    [
+     "AR",
+     "Club Atlético Rosario Central",
+     "2005–2007"
+    ],
+    [
+     "PT",
+     "S.L. Benfica",
+     "2007–2010"
+    ],
+    [
+     "ES",
+     "Real Madrid Club de Fútbol",
+     "2010–2014"
+    ],
+    [
+     "FR",
+     "Paris Saint-Germain",
+     "2015–2022"
+    ],
+    [
+     "IT",
+     "Juventus",
+     "2022–2023"
+    ],
+    [
+     "PT",
+     "S.L. Benfica",
+     "2023–2025"
+    ],
+    [
+     "AR",
+     "Club Atlético Rosario Central",
+     "2025–"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q167790",
+   "name": "Edinson Kavani",
+   "nat": "UY",
+   "clubs": [
+    [
+     "IT",
+     "Napoli",
+     "2010–2013"
+    ],
+    [
+     "FR",
+     "Paris Saint-Germain",
+     "2013–2020"
+    ],
+    [
+     "ES",
+     "Valencia",
+     "2022–2023"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q172720",
+   "name": "Dani Alves",
+   "nat": "BR",
+   "clubs": [
+    [
+     "BR",
+     "Esporte Clube Bahia",
+     "2001–2002"
+    ],
+    [
+     "ES",
+     "Sevilla",
+     "2002–2008"
+    ],
+    [
+     "IT",
+     "Juventus",
+     "2016–2017"
+    ],
+    [
+     "FR",
+     "Paris Saint-Germain",
+     "2017–2019"
+    ],
+    [
+     "BR",
+     "São Paulo",
+     "2019–2021"
+    ],
+    [
+     "MX",
+     "Pumas UNAM",
+     "2022–2023"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q131234",
+   "name": "Toni Kroos",
+   "nat": "DE",
+   "clubs": [
+    [
+     "DE",
+     "Bayern Munich",
+     "2007–2014"
+    ],
+    [
+     "DE",
+     "Bayer 04 Leverkusen",
+     "2009–2010"
+    ],
+    [
+     "ES",
+     "Real Madrid Club de Fútbol",
+     "2014–2024"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q17499",
+   "name": "Cesc Fàbregas",
+   "nat": "ES",
+   "clubs": [
+    [
+     "ES",
+     "CE Mataró",
+     "1995–1997"
+    ],
+    [
+     "MC",
+     "Monaco",
+     "2019–2022"
+    ],
+    [
+     "IT",
+     "Como 1907",
+     "2022–2023"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q1907",
+   "name": "Hugo Lloris",
+   "nat": "FR",
+   "clubs": [
+    [
+     "FR",
+     "OGC Nice",
+     "2005–2008"
+    ],
+    [
+     "FR",
+     "Olympique Lyonnais",
+     "2008–2012"
+    ],
+    [
+     "US",
+     "Los Angeles",
+     "2024–"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q108153171",
+   "name": "Joao Grimaldo",
+   "nat": "PE",
+   "clubs": [
+    [
+     "PE",
+     "Club Sporting Cristal",
+     "2020–2024"
+    ],
+    [
+     "RS",
+     "Partizan",
+     "2024–2026"
+    ],
+    [
+     "LV",
+     "Riga",
+     "2025"
+    ],
+    [
+     "CZ",
+     "Sparta Prague",
+     "2026–"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q107674650",
+   "name": "Percy Liza",
+   "nat": "PE",
+   "clubs": [
+    [
+     "PE",
+     "Club Sporting Cristal",
+     "2019–2022"
+    ],
+    [
+     "PE",
+     "Carlos A. Mannucci",
+     "2024"
+    ],
+    [
+     "PE",
+     "FBC Melgar",
+     "2025–"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q49704",
+   "name": "Sergio Busquets",
+   "nat": "ES",
+   "clubs": [
+    [
+     "ES",
+     "UE Lleida",
+     "1999–2003"
+    ],
+    [
+     "ES",
+     "UFB Jàbac i Terrassa",
+     "2003–2005"
+    ],
+    [
+     "ES",
+     "Barcelona Atlètic",
+     "2007–2008"
+    ],
+    [
+     "US",
+     "Inter Miami",
+     "2023–2025"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q115453",
+   "name": "Ivan Rakitić",
+   "nat": "HR",
+   "clubs": [
+    [
+     "CH",
+     "Basel",
+     "2005–2007"
+    ],
+    [
+     "DE",
+     "Schalke 04",
+     "2007–2011"
+    ],
+    [
+     "ES",
+     "Sevilla",
+     "2011–2024"
+    ],
+    [
+     "SA",
+     "Al-Shabab Football Club",
+     "2024"
+    ],
+    [
+     "HR",
+     "HNK Hajduk Split",
+     "2024–2025"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q616664",
+   "name": "Casemiro",
+   "nat": "BR",
+   "clubs": [
+    [
+     "BR",
+     "São Paulo",
+     "2010–2013"
+    ],
+    [
+     "ES",
+     "Real Madrid Club de Fútbol",
+     "2013–2022"
+    ],
+    [
+     "PT",
+     "Porto",
+     "2014–2015"
+    ],
+    [
+     "US",
+     "Inter Miami",
+     "2026–"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q166317",
+   "name": "Paulo Dybala",
+   "nat": "AR",
+   "clubs": [
+    [
+     "AR",
+     "Instituto Atlético Central Córdoba",
+     "2011–2012"
+    ],
+    [
+     "IT",
+     "Juventus",
+     "2015–2022"
+    ],
+    [
+     "IT",
+     "Roma",
+     "2022–"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q151260",
+   "name": "Jérôme Boateng",
+   "nat": "DE",
+   "clubs": [
+    [
+     "DE",
+     "Hertha BSC",
+     "2007"
+    ],
+    [
+     "DE",
+     "Hamburger SV",
+     "2007–2010"
+    ],
+    [
+     "DE",
+     "Bayern Munich",
+     "2011–2021"
+    ],
+    [
+     "FR",
+     "Olympique Lyonnais",
+     "2021–2023"
+    ],
+    [
+     "IT",
+     "U.S. Salernitana 1919",
+     "2024"
+    ],
+    [
+     "AT",
+     "LASK Linz",
+     "2024–2025"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q187159",
+   "name": "Jordi Alba",
+   "nat": "ES",
+   "clubs": [
+    [
+     "ES",
+     "Valencia CF Mestalla",
+     "2007–2009"
+    ],
+    [
+     "ES",
+     "Gimnàstic de Tarragona",
+     "2008–2009"
+    ],
+    [
+     "ES",
+     "Valencia",
+     "2009–2012"
+    ],
+    [
+     "US",
+     "Inter Miami",
+     "2023–2025"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q439722",
+   "name": "Son Heung-min",
+   "nat": "KR",
+   "clubs": [
+    [
+     "DE",
+     "Hamburger SV",
+     "2010–2013"
+    ],
+    [
+     "DE",
+     "Bayer 04 Leverkusen",
+     "2013–2015"
+    ],
+    [
+     "US",
+     "Los Angeles",
+     "2025–"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q152377",
+   "name": "Marco Reus",
+   "nat": "DE",
+   "clubs": [
+    [
+     "DE",
+     "Rot Weiss Ahlen",
+     "2007–2009"
+    ],
+    [
+     "DE",
+     "Borussia Mönchengladbach",
+     "2009–2012"
+    ],
+    [
+     "DE",
+     "Borussia Dortmund",
+     "2012–2024"
+    ],
+    [
+     "US",
+     "LA Galaxy",
+     "2024–"
+    ]
+   ]
+  },
+  {
+   "id": "wd_Q163564",
+   "name": "Nemanja Vidić",
+   "nat": "YU",
+   "clubs": [
+    [
+     "RS",
+     "Spartak Subotica",
+     "2000–2001"
+    ],
+    [
+     "RS",
+     "Crvena zvezda",
+     "2000–2004"
+    ],
+    [
+     "RU",
+     "Spartak Moscow",
+     "2004–2006"
+    ],
+    [
+     "IT",
+     "Inter",
+     "2014–2016"
+    ]
+   ]
+  }
+ ],
+ "_izoh": "Wikidata (CC0) dan avtomatik olingan. Xato topsangiz, to'g'ri variantni data/players.json ga qo'lda yozing."
+}

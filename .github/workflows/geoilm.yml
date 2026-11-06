@@ -1,23 +1,23 @@
-name: GeoIlm quiz
+﻿name: GeoIlm quiz
 
 # Toshkent vaqti = UTC + 5. Kuniga ANIQ 3 ta video: 06:20 davlat, 19:00 futbolchi, 21:00 poytaxt.
 # Har format uchun +1 soatlik zaxira jadval bor: GitHub asosiy ishni o'tkazib yuborsa, zaxira yuboradi;
 # asosiy ish bajarilgan bo'lsa (data/sent.json), zaxira hech narsa yubormaydi.
 on:
   schedule:
-    - cron: "20 1 * * *"    # 06:20 davlat
+    - cron: "20 1 * * *"    # 06:20 Toshkent (1-slot)
     - cron: "20 2 * * *"    #   zaxira
-    - cron: "0 14 * * *"    # 19:00 futbolchi
+    - cron: "0 14 * * *"    # 19:00 Toshkent (2-slot)
     - cron: "0 15 * * *"    #   zaxira
-    - cron: "0 16 * * *"    # 21:00 poytaxt
+    - cron: "0 16 * * *"    # 21:00 Toshkent (3-slot)
     - cron: "0 17 * * *"    #   zaxira
   workflow_dispatch:         # qo'lda ishga tushirish (har doim yuboradi)
     inputs:
       mode:
         description: "Format"
         type: choice
-        default: davlat
-        options: [davlat, futbolchi, poytaxt]
+        default: globus
+        options: [globus, globus_poytaxt, futbolchi, poytaxt, davlat, viloyat, tuman]
 
 permissions:
   contents: write            # data/used.json va data/sent.json ni repoga qaytarib yozish uchun
@@ -42,11 +42,12 @@ jobs:
         run: |
           if [ "$EVENT" = "schedule" ]; then
             case "$CRON" in
-              "20 1 * * *"|"20 2 * * *") MODE=davlat ;;
-              "0 14 * * *"|"0 15 * * *") MODE=futbolchi ;;
-              "0 16 * * *"|"0 17 * * *") MODE=poytaxt ;;
+              "20 1 * * *"|"20 2 * * *") SLOT=0 ;;   # 06:20 (zaxira 07:20)
+              "0 14 * * *"|"0 15 * * *") SLOT=1 ;;   # 19:00 (zaxira 20:00)
+              "0 16 * * *"|"0 17 * * *") SLOT=2 ;;   # 21:00 (zaxira 22:00)
               *) echo "::error::Noma'lum jadval: $CRON"; exit 1 ;;
             esac
+            MODE=$(python3 -c "import generate; print(generate.mode_for_now($SLOT))")
             python3 sent_log.py check "$MODE" >> "$GITHUB_OUTPUT"
           else
             MODE="${INPUT_MODE:-davlat}"

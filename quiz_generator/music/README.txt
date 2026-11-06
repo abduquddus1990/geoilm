@@ -1,1 +1,1 @@
-Bu papkaga mualliflik huquqidan xoli .mp3 treklarni joylang (YouTube Audio Library, Pixabay Music).
+Ixtiyoriy: o'z treklaringizni qo'ysangiz (music/ yoki music/davlat, music/poytaxt, music/futbolchi), generatsiya o'rniga ular ishlatiladi. Bo'sh bo'lsa — har videoga original musiqa avtomatik yasaladi.
