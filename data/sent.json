@@ -1,10 +1,4 @@
 {
- "2026-11-06": [
-  "davlat",
-  "futbolchi",
-  "hikoya",
-  "poytaxt"
- ],
  "2026-11-07": [
   "futbolchi",
   "globus",
@@ -69,5 +63,8 @@
   "futbolchi",
   "globus",
   "globus_poytaxt"
+ ],
+ "2026-11-20": [
+  "poytaxt"
  ]
 }
