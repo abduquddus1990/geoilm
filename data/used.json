@@ -40,7 +40,7 @@
  "futbolchi:ramos": "2026-11-05",
  "futbolchi:mbappe": "2026-11-05",
  "futbolchi:falcao": "2026-11-05",
- "futbolchi:vieira": "2026-11-05",
+ "futbolchi:vieira": "2026-11-24",
  "poytaxt:724": "2026-11-17",
  "poytaxt:380": "2026-11-19",
  "poytaxt:300": "2026-11-17",
@@ -141,7 +141,7 @@
  "futbolchi:wd_Q39444": "2026-11-09",
  "futbolchi:wd_Q1354960": "2026-11-09",
  "futbolchi:hazard": "2026-11-09",
- "futbolchi:mane": "2026-11-09",
+ "futbolchi:mane": "2026-11-24",
  "futbolchi:shomurodov": "2026-11-09",
  "futbolchi:wd_Q115453": "2026-11-09",
  "860": "2026-11-12",
@@ -243,5 +243,9 @@
  "futbolchi:casillas": "2026-11-21",
  "futbolchi:wd_Q131234": "2026-11-21",
  "poytaxt:156": "2026-11-22",
- "globus_poytaxt:860": "2026-11-23"
+ "globus_poytaxt:860": "2026-11-23",
+ "futbolchi:salah": "2026-11-24",
+ "futbolchi:wd_Q1912": "2026-11-24",
+ "futbolchi:wd_Q1918": "2026-11-24",
+ "futbolchi:cruyff": "2026-11-24"
 }
