@@ -1,9 +1,4 @@
 {
- "2026-11-11": [
-  "davlat",
-  "globus_poytaxt",
-  "viloyat"
- ],
  "2026-11-12": [
   "futbolchi",
   "globus",
@@ -68,5 +63,8 @@
   "futbolchi",
   "globus",
   "globus_poytaxt"
+ ],
+ "2026-11-25": [
+  "viloyat"
  ]
 }
